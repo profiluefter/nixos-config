@@ -1,0 +1,10 @@
+keys:
+  - &user_profiluefter 9264180E8BA8C283F19DB9F8B18AC2562696539F
+  - &host_fabian-ws age1pxjza00udw4zezpzc6cdm8uqledp8mvwhmuk7y7gljqccvyjzdasj8zq26
+
+creation_rules:
+  - key_groups:
+      - pgp:
+          - *user_profiluefter
+        age:
+          - *host_fabian-ws
