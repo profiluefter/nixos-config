@@ -8,4 +8,4 @@
   * find solution for better device specific configuration
 * Move global configuration to individual projects
   * e.g. make Android SDK only available in Android projects
-* Pull certain Docker images as part of the system build so they do not have to be persisted
+* Pull certain Docker images as part of the system build, so they do not have to be persisted

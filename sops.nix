@@ -1,7 +1,8 @@
 { config, ... }:
 {
   sops.gnupg.sshKeyPaths = [];
-  sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+  # The persisted /etc isn't mounted fast enough
+  sops.age.sshKeyPaths = [ "/persist/etc/ssh/ssh_host_ed25519_key" ];
 
   sops.secrets.rootHash = {
     neededForUsers = true;
