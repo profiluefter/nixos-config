@@ -1,6 +1,7 @@
 keys:
   - &user_profiluefter 9264180E8BA8C283F19DB9F8B18AC2562696539F
   - &host_fabian-ws age1pxjza00udw4zezpzc6cdm8uqledp8mvwhmuk7y7gljqccvyjzdasj8zq26
+  - &host_envy age1np7tpxyaenj2k9kn5d3keqv74u0yztshk0f05unukcpvfavryvsqsu55pd
 
 creation_rules:
   - key_groups:
@@ -8,3 +9,4 @@ creation_rules:
           - *user_profiluefter
         age:
           - *host_fabian-ws
+          - *host_envy
