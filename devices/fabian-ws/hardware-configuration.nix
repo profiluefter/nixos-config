@@ -9,43 +9,11 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/72afc3e6-956b-4ba7-94eb-e7d645f5bf08";
-      fsType = "btrfs";
-      options = [ "subvol=root" "compress=zstd" "noatime" ];
-    };
-
-  fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/72afc3e6-956b-4ba7-94eb-e7d645f5bf08";
-      fsType = "btrfs";
-      options = [ "subvol=nix" "compress=zstd" "noatime" ];
-    };
-
-  fileSystems."/data" =
-    { device = "/dev/disk/by-uuid/72afc3e6-956b-4ba7-94eb-e7d645f5bf08";
-      fsType = "btrfs";
-      options = [ "subvol=data" "compress=zstd" "noatime" ];
-      neededForBoot = true;
-    };
-
-  fileSystems."/persist" =
-    { device = "/dev/disk/by-uuid/72afc3e6-956b-4ba7-94eb-e7d645f5bf08";
-      fsType = "btrfs";
-      options = [ "subvol=persist" "compress=zstd" "noatime" ];
-      neededForBoot = true;
-    };
-
-  fileSystems."/var/log" =
-    { device = "/dev/disk/by-uuid/72afc3e6-956b-4ba7-94eb-e7d645f5bf08";
-      fsType = "btrfs";
-      options = [ "subvol=log" "compress=zstd" "noatime" ];
-      neededForBoot = true;
-    };
-
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/4499-08AD";
-      fsType = "vfat";
-    };
+  profi.partitions = {
+    enable = true;
+    btrfsDevice = "/dev/disk/by-uuid/72afc3e6-956b-4ba7-94eb-e7d645f5bf08";
+    bootDevice = "/dev/disk/by-uuid/4499-08AD";
+  };
 
   swapDevices =
     [ { device = "/dev/disk/by-uuid/386aa628-a7a0-43ce-82da-7916838c1ec1"; }

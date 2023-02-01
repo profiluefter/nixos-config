@@ -8,44 +8,13 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
-  
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/4dfdf851-9acb-42d4-b45b-de50bee04755";
-      fsType = "btrfs";
-      options = [ "subvol=nix-os/root" "compress=zstd" "noatime" ];
-    };
-  
-  fileSystems."/nix" =
-    { device = "/dev/disk/by-uuid/4dfdf851-9acb-42d4-b45b-de50bee04755";
-      fsType = "btrfs";
-      options = [ "subvol=nix-os/nix" "compress=zstd" "noatime" ];
-    };
-  
-  fileSystems."/data" =
-    { device = "/dev/disk/by-uuid/4dfdf851-9acb-42d4-b45b-de50bee04755";
-      fsType = "btrfs";
-      options = [ "subvol=nix-os/data" "compress=zstd" "noatime" ];
-      neededForBoot = true;
-    };
-  
-  fileSystems."/persist" =
-    { device = "/dev/disk/by-uuid/4dfdf851-9acb-42d4-b45b-de50bee04755";
-      fsType = "btrfs";
-      options = [ "subvol=nix-os/persist" "compress=zstd" "noatime" ];
-      neededForBoot = true;
-    };
-  
-  fileSystems."/var/log" =
-    { device = "/dev/disk/by-uuid/4dfdf851-9acb-42d4-b45b-de50bee04755";
-      fsType = "btrfs";
-      options = [ "subvol=nix-os/log" "compress=zstd" "noatime" ];
-      neededForBoot = true;
-    };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/EC6A-D41C";
-      fsType = "vfat";
-    };
+  profi.partitions = {
+    enable = true;
+    btrfsDevice = "/dev/disk/by-uuid/4dfdf851-9acb-42d4-b45b-de50bee04755";
+    subvolPrefix = "nix-os";
+    bootDevice = "/dev/disk/by-uuid/EC6A-D41C";
+  };
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's

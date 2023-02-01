@@ -11,6 +11,8 @@
     ./system-packages.nix
     ./locales.nix
 
+    ./modules/partitions.nix
+
     ./services/firewall.nix
     ./services/openssh.nix
     ./services/desktop.nix
