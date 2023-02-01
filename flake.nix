@@ -31,10 +31,6 @@
         nixpkgs.lib.nixosSystem {
           inherit system;
 
-          specialArgs = {
-            host = hostname;
-          };
-
           modules = [
             # overlay for pkgs.unstable
             ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
@@ -52,6 +48,9 @@
               ];
             })
 
+            { networking.hostName = hostname; }
+
+            # General configuration
             ./configuration.nix
           ] ++ additionalConfig;
         };

@@ -1,6 +1,5 @@
 { ... }:
 {
-  # TODO: device specific
   environment.sessionVariables."NIXOS_CONFIG" = "/data/sync/code-misc/nixos-config/configuration.nix";
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -11,15 +10,17 @@
     ./system-packages.nix
     ./locales.nix
 
+    ./modules/system-purity
     ./modules/partitions.nix
 
-    ./services/firewall.nix
-    ./services/openssh.nix
     ./services/desktop.nix
+    ./services/docker.nix
+    ./services/firewall.nix
+    ./services/networking.nix
+    ./services/openssh.nix
+    ./services/peerix
     ./services/pipewire.nix
     ./services/syncthing.nix
-    ./services/docker.nix
-    ./services/peerix
 
     ./users/profiles.nix
     ./users/home-manager.nix
