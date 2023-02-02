@@ -14,6 +14,8 @@
     rollback = false;
   };
 
+  sops.age.sshKeyPaths = pkgs.lib.mkForce [ "/etc/ssh/ssh_host_ed25519_key" ];
+
   profi.partitions = {
     enable = true;
     btrfsDevice = "/dev/disk/by-uuid/4dfdf851-9acb-42d4-b45b-de50bee04755";
