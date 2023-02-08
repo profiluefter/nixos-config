@@ -1,7 +1,7 @@
 {
   description = "My system configuration";
 
-  inputs.nixpkgs.url = "nixpkgs/nixos-22.05";
+  inputs.nixpkgs.url = "nixpkgs/nixos-22.11";
 #  inputs.nixpkgs.url = "nixpkgs/nixos-unstable";
   inputs.nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
 
