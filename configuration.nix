@@ -1,10 +1,20 @@
-{ ... }:
+{ pkgs, ... }:
 {
   environment.sessionVariables."NIXOS_CONFIG" = "/data/sync/code-misc/nixos-config/configuration.nix";
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # REMEMBER: https://github.com/thiagokokada/nix-alien
+
+  # FIXME: xournalpp workaround
+  environment.systemPackages = [
+    pkgs.gnome.adwaita-icon-theme
+    pkgs.shared-mime-info
+  ];
+  environment.pathsToLink = [
+    "/share/icons"
+    "/share/mime"
+  ];
 
   imports = [
     ./system-packages.nix
