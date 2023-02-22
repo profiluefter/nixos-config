@@ -1,11 +1,20 @@
 { pkgs, config, ... }:
+let
+  waylandEnabled = false;
+  gpuSandboxWorkaround = true;
+
+  waylandFlags = if waylandEnabled then ["--enable-features=UseOzonePlatform" "--ozone-platform=wayland"] else [];
+  gpuSandboxFlags = if gpuSandboxWorkaround then ["--disable-gpu-sandbox"] else [];
+
+  discordArgs = waylandFlags ++ gpuSandboxFlags;
+in
 {
   home.packages = [ pkgs.discord ];
 
   xdg.desktopEntries.discord = {
-    name = "Discord (Wayland)";
+    name = "Discord${if waylandEnabled then " (Wayland)" else ""}";
     genericName = "All-in-one cross-platform voice and text chat for gamers";
-    exec = "discord --enable-features=UseOzonePlatform --ozone-platform=wayland";
+    exec = "discord ${builtins.concatStringsSep " " discordArgs}";
     terminal = false;
     categories = [ "Network" "InstantMessaging" ];
     icon = "discord";

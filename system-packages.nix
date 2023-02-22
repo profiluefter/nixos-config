@@ -11,5 +11,6 @@
     micro
     vim
     wget
+    killall
   ];
 }
