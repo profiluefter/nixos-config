@@ -1,4 +1,4 @@
 { pkgs, ... }:
 {
-  home.packages = [ pkgs.jdk11 ];
+  programs.java.enable = true;
 }
