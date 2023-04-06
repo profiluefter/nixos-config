@@ -1,5 +1,7 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 {
+  environment.systemPackages = [ pkgs.sops ];
+
   sops.gnupg.sshKeyPaths = [];
   # The persisted /etc isn't mounted fast enough
   sops.age.sshKeyPaths = [ "/persist/etc/ssh/ssh_host_ed25519_key" ];
