@@ -9,6 +9,7 @@ in
 
     ./rollback.nix
     ./persistence.nix
+    ./utils.nix
   ];
 
   options.profi.systemPurity = {

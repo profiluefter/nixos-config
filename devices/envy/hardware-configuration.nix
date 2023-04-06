@@ -10,11 +10,9 @@
   boot.extraModulePackages = [ ];
 
   profi.systemPurity = {
-    enable = false;
-    rollback = false;
+    enable = true;
+    rollback = true;
   };
-
-  sops.age.sshKeyPaths = pkgs.lib.mkForce [ "/etc/ssh/ssh_host_ed25519_key" ];
 
   profi.partitions = {
     enable = true;

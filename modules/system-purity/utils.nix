@@ -2,7 +2,7 @@
 with lib;
 let
   cfg = config.profi.systemPurity;
-  btrfsDevice = config.profi.partitions.btrfsDevice;
+  partCfg = config.profi.partitions;
 in
 {
   config = mkIf cfg.enable {
@@ -14,12 +14,13 @@ in
 
         MOUNTPOINT=$(mktemp -d -t fs-diff-mountpoint-XXXXXXXXXXXXXXX)
 
-        sudo mount -o subvol=/ ${btrfsDevice} "$MOUNTPOINT"
+        trap "sudo umount $MOUNTPOINT && rmdir $MOUNTPOINT" EXIT
+        sudo mount -o subvol=/ ${partCfg.btrfsDevice} "$MOUNTPOINT"
 
-        OLD_TRANSID=$(sudo btrfs subvolume find-new "$MOUNTPOINT/root-blank" 9999999)
+        OLD_TRANSID=$(sudo btrfs subvolume find-new "$MOUNTPOINT/${partCfg.subvolPrefix}root-blank" 9999999)
         OLD_TRANSID=''${OLD_TRANSID#transid marker was }
 
-        sudo btrfs subvolume find-new "$MOUNTPOINT/root" "$OLD_TRANSID" |
+        sudo btrfs subvolume find-new "$MOUNTPOINT/${partCfg.subvolPrefix}root" "$OLD_TRANSID" |
         sed '$d' |
         cut -f17- -d' ' |
         sort |
@@ -34,9 +35,6 @@ in
             echo "$path"
           fi
         done
-
-        sudo umount $MOUNTPOINT
-        rmdir $MOUNTPOINT
       '')
     ];
   };
