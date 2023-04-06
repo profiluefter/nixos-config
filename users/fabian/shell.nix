@@ -22,6 +22,7 @@
       yt-music-dl = "yt-dlp -x --embed-thumbnail --embed-metadata --sponsorblock-remove music_offtopic";
       nix-update = "(cd ~/code/misc/nixos-config && exec nix flake update)";
       nix-upgrade = "sudo nixos-rebuild switch --flake ~/code/misc/nixos-config";
+      nix-test = "sudo nixos-rebuild test --flake ~/code/misc/nixos-config";
     };
   };
 
