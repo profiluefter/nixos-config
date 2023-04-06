@@ -1,5 +1,9 @@
-{ ... }:
+{ pkgs, ... }:
 {
+  home.packages = with pkgs; [
+    ark
+  ];
+
   # https://github.com/pjones/plasma-manager/blob/trunk/example/home.nix
   programs.plasma = {
     enable = true;
