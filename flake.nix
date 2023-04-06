@@ -7,6 +7,9 @@
 
   inputs.sops-nix.url = "github:Mic92/sops-nix";
 
+  inputs.peerix.url = "github:cid-chan/peerix";
+  inputs.peerix.inputs.nixpkgs.follows = "nixpkgs";
+
   inputs.impermanence.url = "github:nix-community/impermanence";
 
   inputs.home-manager.url = "github:nix-community/home-manager/release-22.05";
@@ -17,7 +20,7 @@
   inputs.plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
   inputs.plasma-manager.inputs.home-manager.follows = "home-manager";
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, sops-nix, impermanence, home-manager, plasma-manager }:
+  outputs = { self, nixpkgs, nixpkgs-unstable, sops-nix, peerix, impermanence, home-manager, plasma-manager }:
     let
       system = "x86_64-linux";
       overlay-unstable = final: prev: {
@@ -37,15 +40,20 @@
 
             sops-nix.nixosModules.sops
 
+            peerix.nixosModules.peerix
+
             impermanence.nixosModule
 
             home-manager.nixosModule
 
-            # Include plasma-manager
             ({ ... }: {
+              # Include plasma-manager
               home-manager.users.fabian.imports = [
                 plasma-manager.homeManagerModules.plasma-manager
               ];
+
+              # Set peerix package
+              services.peerix.package = peerix.packages.${system}.peerix;
             })
 
             { networking.hostName = hostname; }

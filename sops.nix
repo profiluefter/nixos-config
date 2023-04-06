@@ -33,4 +33,11 @@
     owner = config.users.users.fabian.name;
     group = config.users.users.fabian.group;
   };
+
+  sops.secrets.peerixPrivateKeys = {
+    format = "binary";
+    sopsFile = ./secrets/peerix-private.json;
+    mode = "0400";
+    owner = config.users.users.peerix.name;
+  };
 }

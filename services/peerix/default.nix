@@ -1,5 +1,15 @@
-{ ... }:
+{ config, peerix, ... }:
 {
-  # TODO: https://github.com/cid-chan/peerix
-  # With flakes: https://dataswamp.org/~solene/2022-08-25-nixos-with-peerix.html
+  services.peerix = {
+    enable = true;
+    privateKeyFile = config.sops.secrets.peerixPrivateKeys.path;
+    publicKeyFile = ./peerix-public;
+    user = config.users.users.peerix.name;
+  };
+
+  users.users.peerix = {
+    isSystemUser = true;
+    group = "peerix";
+  };
+  users.groups.peerix = {};
 }
