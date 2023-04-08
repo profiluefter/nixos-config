@@ -21,6 +21,7 @@
     ./locales.nix
 
     ./modules/system-purity
+    ./modules/cross-compilation.nix
     ./modules/partitions.nix
 
     ./services/desktop.nix
