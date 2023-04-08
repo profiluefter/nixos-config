@@ -22,21 +22,20 @@
 
   outputs = { self, nixpkgs, nixpkgs-unstable, sops-nix, peerix, impermanence, home-manager, plasma-manager }:
     let
-      system = "x86_64-linux";
-      overlay-unstable = final: prev: {
+      overlay-unstable = system: final: prev: {
         unstable = import nixpkgs-unstable {
           inherit system;
           config.allowUnfree = true;
           config.android_sdk.accept_license = true;
         };
       };
-      makeNixOSConfiguration = hostname: additionalConfig:
+      makeNixOSConfiguration = hostname: system: additionalConfig:
         nixpkgs.lib.nixosSystem {
           inherit system;
 
           modules = [
             # overlay for pkgs.unstable
-            ({ config, pkgs, ... }: { nixpkgs.overlays = [ overlay-unstable ]; })
+            ({ config, pkgs, ... }: { nixpkgs.overlays = [ (overlay-unstable system) ]; })
 
             sops-nix.nixosModules.sops
 
@@ -62,8 +61,13 @@
             ./configuration.nix
           ] ++ additionalConfig;
         };
-    in {
-      nixosConfigurations.fabian-ws = makeNixOSConfiguration "fabian-ws" [ ./devices/fabian-ws/configuration.nix ];
-      nixosConfigurations.envy = makeNixOSConfiguration "envy" [ ./devices/envy/configuration.nix ];
+    in rec {
+      nixosConfigurations.fabian-ws = makeNixOSConfiguration "fabian-ws" "x86_64-linux" [ ./devices/fabian-ws/configuration.nix ];
+      nixosConfigurations.envy = makeNixOSConfiguration "envy" "x86_64-linux" [ ./devices/envy/configuration.nix ];
+      nixosConfigurations.nixos-testbench = makeNixOSConfiguration "nixos-testbench" "x86_64-linux" [ ./devices/nixos-testbench/configuration.nix ];
+      nixosConfigurations.srv0 = makeNixOSConfiguration "srv0" "aarch64-linux" [ ./devices/srv0/configuration.nix ];
+      nixosConfigurations.srv0-image = makeNixOSConfiguration "srv0" "aarch64-linux" [ ./devices/srv0/configuration.nix
+        "${nixpkgs}/nixos/modules/installer/cd-dvd/sd-image-aarch64.nix" ];
+      images.srv0 = nixosConfigurations.srv0-image.config.system.build.sdImage;
     };
 }
