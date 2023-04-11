@@ -18,6 +18,7 @@
       ./fabian/nixpkgs.nix
       ./fabian/node.nix
       ./fabian/plasma.nix
+      ./fabian/school.nix
       ./fabian/shell.nix
       ./fabian/supabase.nix
       ./fabian/telegram
