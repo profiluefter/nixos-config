@@ -67,7 +67,7 @@
       nixosConfigurations.nixos-testbench = makeNixOSConfiguration "nixos-testbench" "x86_64-linux" [ ./devices/nixos-testbench/configuration.nix ];
       nixosConfigurations.srv0 = makeNixOSConfiguration "srv0" "aarch64-linux" [ ./devices/srv0/configuration.nix ];
       nixosConfigurations.srv0-image = makeNixOSConfiguration "srv0" "aarch64-linux" [ ./devices/srv0/configuration.nix
-        "${nixpkgs}/nixos/modules/installer/cd-dvd/sd-image-aarch64.nix" ];
+        "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix" ];
       images.srv0 = nixosConfigurations.srv0-image.config.system.build.sdImage;
     };
 }
