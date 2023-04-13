@@ -20,9 +20,7 @@
     ./system-packages.nix
     ./locales.nix
 
-    ./modules/system-purity
-    ./modules/cross-compilation.nix
-    ./modules/partitions.nix
+    ./system-modules
 
     ./services/desktop.nix
     ./services/docker.nix

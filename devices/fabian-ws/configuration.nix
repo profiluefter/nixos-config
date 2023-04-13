@@ -9,4 +9,10 @@
     ./g910.nix
     #./screens.nix
   ];
+
+  profi.workloads = [
+    "android"
+    "desktop"
+    "school"
+  ];
 }

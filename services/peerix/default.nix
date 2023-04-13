@@ -1,7 +1,8 @@
-{ config, peerix, lib, ... }:
+{ config, peerix, system, lib, ... }:
 {
   services.peerix = {
     enable = true;
+    package = peerix.packages.${system}.peerix;
     privateKeyFile = config.sops.secrets.peerixPrivateKeys.path;
     publicKeyFile = ./peerix-public;
     user = config.users.users.peerix.name;

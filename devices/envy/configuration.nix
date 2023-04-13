@@ -6,4 +6,10 @@
     ./nvidia.nix
     ./touchpad.nix
   ];
+
+  profi.workloads = [
+    "android"
+    "desktop"
+    "school"
+  ];
 }

@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, config, ... }:
 let
 #  unstable = fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz";
 #  nixpkgs = import unstable {
@@ -11,11 +11,13 @@ let
   };
 in
 {
-  home.packages = [
-    androidComposition.androidsdk
-  ];
+  config = lib.mkIf (builtins.elem "android" config.profi.workloads) {
+    home.packages = [
+      androidComposition.androidsdk
+    ];
 
-  systemd.user.sessionVariables = {
-    ANDROID_SDK_ROOT = "${androidComposition.androidsdk}/libexec/android-sdk";
+    systemd.user.sessionVariables = {
+      ANDROID_SDK_ROOT = "${androidComposition.androidsdk}/libexec/android-sdk";
+    };
   };
 }

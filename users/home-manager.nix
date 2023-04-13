@@ -1,11 +1,23 @@
-{ ... }:
+{ config, lib2, plasma-manager, ... }:
+let
+  topConfig = config;
+in
 {
   home-manager.useGlobalPkgs = true;
 
   home-manager.users.fabian = { config, pkgs, ... }:
   {
+    _module.args.lib2 = lib2;
+    profi.workloads = topConfig.profi.workloads ++ [
+      "school"
+      "android"
+    ];
+
     imports = [
-      ./fabian/android.nix
+      plasma-manager.homeManagerModules.plasma-manager
+
+      ../user-modules
+
       ./fabian/code.nix
       ./fabian/discord.nix
       ./fabian/gpg.nix
@@ -21,7 +33,6 @@
       ./fabian/school.nix
       ./fabian/shell.nix
       ./fabian/supabase.nix
-      ./fabian/telegram
     ];
 
     home.packages = with pkgs; [
