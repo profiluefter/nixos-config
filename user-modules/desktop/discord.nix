@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, lib2, ... }:
 let
   waylandEnabled = false;
   gpuSandboxWorkaround = true;
@@ -8,10 +8,11 @@ let
 
   discordArgs = waylandFlags ++ gpuSandboxFlags;
 in
+with lib2;
 {
-  home.packages = [ pkgs.discord ];
+  home.packages = mkIfWorkload "desktop" [ pkgs.discord ];
 
-  xdg.desktopEntries.discord = {
+  xdg.desktopEntries.discord = mkIfWorkload "desktop" {
     name = "Discord${if waylandEnabled then " (Wayland)" else ""}";
     genericName = "All-in-one cross-platform voice and text chat for gamers";
     exec = "discord ${builtins.concatStringsSep " " discordArgs}";
@@ -23,5 +24,6 @@ in
 
   # TODO: Clean up
   home.file.".config/autostart/Discord.desktop".source =
+    mkIfWorkload "desktop"
     config.lib.file.mkOutOfStoreSymlink "/home/fabian/.nix-profile/share/applications/discord.desktop";
 }

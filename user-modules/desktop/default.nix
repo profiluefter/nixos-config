@@ -1,6 +1,7 @@
 { ... }:
 {
   imports = [
+    ./discord.nix
     ./telegram
   ];
 }

@@ -2,7 +2,7 @@
 with lib;
 {
   options.profi.workloads = mkOption {
-    type = with types; listOf (enum lib2.workloads);
+    type = lib2.workloadType;
   };
 
   imports = [
