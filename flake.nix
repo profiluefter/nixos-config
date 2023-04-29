@@ -18,7 +18,7 @@
   inputs.plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
   inputs.plasma-manager.inputs.home-manager.follows = "home-manager";
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, sops-nix, peerix, impermanence, home-manager, plasma-manager }:
+  outputs = { self, nixpkgs, nixpkgs-unstable, sops-nix, peerix, impermanence, home-manager, plasma-manager, ... }@args:
     let
       makeNixOSConfiguration = hostname: system: additionalConfig:
         let
@@ -36,7 +36,7 @@
         nixpkgs.lib.nixosSystem {
           inherit system;
 
-          specialArgs = { inherit system lib2 peerix plasma-manager; };
+          specialArgs = { inherit system lib2; } // args;
 
           modules = [
             # overlay for pkgs.unstable
