@@ -39,14 +39,7 @@ in
     ];
 
     home.packages = with pkgs; [
-      firefox-wayland
-
       xournalpp
-      libreoffice
-
-      kate
-      vlc
-
       virt-viewer
     ];
 
