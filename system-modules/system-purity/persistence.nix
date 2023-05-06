@@ -71,6 +71,7 @@ in
           ".local/share/JetBrains"
           ".local/share/Steam"
           ".local/share/TelegramDesktop"
+          ".local/state/wireplumber" # persist audio volumes
           "Downloads"
         ];
       };
