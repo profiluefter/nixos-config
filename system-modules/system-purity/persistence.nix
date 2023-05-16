@@ -62,7 +62,6 @@ in
 
       users.fabian = {
         files = [
-          ".config/yakuakerc" # disable first-run message
           ".ssh/known_hosts"
         ];
 

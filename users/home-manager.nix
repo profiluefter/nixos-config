@@ -28,7 +28,6 @@ in
       ./fabian/jetbrains.nix
       ./fabian/kdeconnect.nix
       ./fabian/keepassxc.nix
-      ./fabian/konsole.nix
       ./fabian/latex.nix
       ./fabian/nixpkgs.nix
       ./fabian/node.nix

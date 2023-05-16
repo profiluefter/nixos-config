@@ -8,4 +8,6 @@
       package = pkgs.libsForQt5.yakuake;
     })
   ];
+
+  programs.plasma.files."yakuakerc"."Dialogs"."FirstRun" = false;
 }
