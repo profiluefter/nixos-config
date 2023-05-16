@@ -16,5 +16,6 @@
     "school"
     "coding"
     "latex"
+    "gaming"
   ];
 }

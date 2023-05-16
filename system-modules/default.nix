@@ -11,5 +11,6 @@ with lib;
     ./cross-compilation.nix
     ./desktop.nix
     ./partitions.nix
+    ./steam.nix
   ];
 }

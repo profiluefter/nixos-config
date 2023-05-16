@@ -35,7 +35,6 @@
     ./users/home-manager.nix
 
     ./sops.nix
-    ./steam.nix
   ];
 
   # This value determines the NixOS release from which the default

@@ -12,10 +12,7 @@ in
 #  builtins.trace lib2
   {
     _module.args.lib2 = lib2;
-    profi.workloads = topConfig.profi.workloads ++ [
-      "school"
-      "android"
-    ];
+    profi.workloads = topConfig.profi.workloads;
 
     imports = [
       plasma-manager.homeManagerModules.plasma-manager
@@ -23,11 +20,6 @@ in
       ../user-modules
 
       ./fabian/code.nix
-    ];
-
-    home.packages = with pkgs; [
-      xournalpp
-      virt-viewer
     ];
 
 #     home.stateVersion = "22.11";

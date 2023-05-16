@@ -7,6 +7,8 @@ let
     "desktop"
     "coding"
     "latex"
+    "gaming"
+
     "hardware-envy"
   ];
 in

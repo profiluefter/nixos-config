@@ -9,6 +9,7 @@
     ./keepassxc.nix
     ./plasma.nix
     ./standard-apps.nix
+    ./tools.nix
     ./yakuake.nix
   ];
 }
