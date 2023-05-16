@@ -22,7 +22,6 @@
 
     ./system-modules
 
-    ./services/desktop.nix
     ./services/docker.nix
     ./services/firewall.nix
     ./services/networking.nix

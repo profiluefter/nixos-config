@@ -10,9 +10,9 @@ let
 in
 with lib2;
 {
-  home.packages = mkIfWorkload "desktop" [ pkgs.discord ];
+  home.packages = mkIfWorkload config "desktop" [ pkgs.discord ];
 
-  xdg.desktopEntries.discord = mkIfWorkload "desktop" {
+  xdg.desktopEntries.discord = mkIfWorkload config "desktop" {
     name = "Discord${if waylandEnabled then " (Wayland)" else ""}";
     genericName = "All-in-one cross-platform voice and text chat for gamers";
     exec = "discord ${builtins.concatStringsSep " " discordArgs}";
@@ -24,6 +24,6 @@ with lib2;
 
   # TODO: Clean up
   home.file.".config/autostart/Discord.desktop".source =
-    mkIfWorkload "desktop"
-    config.lib.file.mkOutOfStoreSymlink "/home/fabian/.nix-profile/share/applications/discord.desktop";
+    mkIfWorkload config "desktop"
+    (config.lib.file.mkOutOfStoreSymlink "/home/fabian/.nix-profile/share/applications/discord.desktop");
 }

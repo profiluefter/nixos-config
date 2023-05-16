@@ -1,14 +1,14 @@
-{ pkgs, ... }:
+{ pkgs, lib2, config, ... }:
+let
+  enabled = lib2.hasWorkload config "desktop";
+in
 {
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  services.xserver.enable = enabled;
 
   # Enable the KDE Plasma Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
-
-  # KDE Plasma tiling extension
-  environment.systemPackages = [ pkgs.libsForQt5.bismuth ];
+  services.xserver.displayManager.sddm.enable = enabled;
+  services.xserver.desktopManager.plasma5.enable = enabled;
 
   # use wayland per default
   services.xserver.displayManager.defaultSession = "plasmawayland";
@@ -19,10 +19,7 @@
     xkbVariant = "nodeadkeys";
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
-  fonts.fonts = with pkgs; [
+  fonts.fonts = with pkgs; lib2.mkIfWorkload config "desktop" [
     corefonts
     noto-fonts
     noto-fonts-emoji

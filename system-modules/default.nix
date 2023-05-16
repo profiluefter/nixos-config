@@ -7,7 +7,9 @@ with lib;
 
   imports = [
     ./system-purity
+
     ./cross-compilation.nix
+    ./desktop.nix
     ./partitions.nix
   ];
 }
