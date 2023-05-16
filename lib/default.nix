@@ -5,6 +5,7 @@ let
     "school"
     "android"
     "desktop"
+    "hardware-envy"
   ];
 in
 {

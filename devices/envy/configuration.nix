@@ -4,12 +4,12 @@
     ./bootloader.nix
     ./hardware-configuration.nix
     ./nvidia.nix
-    ./touchpad.nix
   ];
 
   profi.workloads = [
     "android"
     "desktop"
     "school"
+    "hardware-envy"
   ];
 }
