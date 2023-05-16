@@ -12,18 +12,21 @@ with lib2;
 {
   home.packages = mkIfWorkload config "desktop" [ pkgs.discord ];
 
-  xdg.desktopEntries.discord = mkIfWorkload config "desktop" {
-    name = "Discord${if waylandEnabled then " (Wayland)" else ""}";
-    genericName = "All-in-one cross-platform voice and text chat for gamers";
-    exec = "discord ${builtins.concatStringsSep " " discordArgs}";
-    terminal = false;
-    categories = [ "Network" "InstantMessaging" ];
-    icon = "discord";
-    mimeType = [ "x-scheme-handler/discord" ];
+  xdg.desktopEntries = mkIfWorkload config "desktop" {
+    discord = {
+      name = "Discord${if waylandEnabled then " (Wayland)" else ""}";
+      genericName = "All-in-one cross-platform voice and text chat for gamers";
+      exec = "discord ${builtins.concatStringsSep " " discordArgs}";
+      terminal = false;
+      categories = [ "Network" "InstantMessaging" ];
+      icon = "discord";
+      mimeType = [ "x-scheme-handler/discord" ];
+    };
   };
 
   # TODO: Clean up
-  home.file.".config/autostart/Discord.desktop".source =
-    mkIfWorkload config "desktop"
-    (config.lib.file.mkOutOfStoreSymlink "/home/fabian/.nix-profile/share/applications/discord.desktop");
+  home.file = mkIfWorkload config "desktop" {
+    ".config/autostart/Discord.desktop".source =
+      (config.lib.file.mkOutOfStoreSymlink "/home/fabian/.nix-profile/share/applications/discord.desktop");
+  };
 }

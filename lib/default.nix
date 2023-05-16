@@ -12,16 +12,20 @@ let
     "hardware-envy"
   ];
 in
-{
+rec {
   inherit workloads;
 
   workloadType = with types; listOf (enum workloads);
 
   mkIfWorkload = config: workload: content:
-    assert builtins.elem workload workloads;
-    mkIf (builtins.elem workload config.profi.workloads) content;
+    mkIf (hasWorkload config workload) content;
 
   hasWorkload = config: workload:
-    assert builtins.elem workload workloads;
-    builtins.elem workload config.profi.workloads;
+    if
+      builtins.isList workload
+    then
+      builtins.all (x: hasWorkload config x) workload
+    else
+      assert builtins.elem workload workloads;
+      builtins.elem workload config.profi.workloads;
 }

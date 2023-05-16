@@ -29,7 +29,6 @@
     ./services/peerix
     ./services/pipewire.nix
     ./services/syncthing.nix
-    ./services/virtualbox.nix
 
     ./users/profiles.nix
     ./users/home-manager.nix

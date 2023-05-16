@@ -12,5 +12,6 @@ with lib;
     ./desktop.nix
     ./partitions.nix
     ./steam.nix
+    ./virtualbox.nix
   ];
 }
