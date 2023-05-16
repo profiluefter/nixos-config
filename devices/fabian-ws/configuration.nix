@@ -14,5 +14,7 @@
     "android"
     "desktop"
     "school"
+    "coding"
+    "latex"
   ];
 }

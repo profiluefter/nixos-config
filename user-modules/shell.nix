@@ -16,7 +16,6 @@
   programs.bash = {
     enable = true;
     shellAliases = {
-      heimo = "curl -s -d \"auth_user=$(cat /run/secrets/schoolUser)\" -d \"auth_pass=$(cat /run/secrets/schoolPassword)\" -d 'accept=Anmelden' http://10.10.0.251:8002/index.php?zone=cp_htl";
       cat = "bat";
 #      fnd = "";
       yt-music-dl = "yt-dlp -x --embed-thumbnail --embed-metadata --sponsorblock-remove music_offtopic";

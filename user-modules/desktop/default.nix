@@ -4,6 +4,10 @@
     ./telegram
 
     ./discord.nix
+    ./jetbrains.nix
+    ./kdeconnect.nix
+    ./keepassxc.nix
+    ./plasma.nix
     ./standard-apps.nix
     ./yakuake.nix
   ];

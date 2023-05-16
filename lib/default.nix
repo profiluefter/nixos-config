@@ -5,6 +5,8 @@ let
     "school"
     "android"
     "desktop"
+    "coding"
+    "latex"
     "hardware-envy"
   ];
 in

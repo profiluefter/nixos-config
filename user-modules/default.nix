@@ -10,5 +10,11 @@ with lib;
     ./hardware
 
     ./android.nix
+    ./coding-tools.nix
+    ./gpg.nix
+    ./latex.nix
+    ./nixpkgs.nix
+    ./school.nix
+    ./shell.nix
   ];
 }

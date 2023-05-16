@@ -23,18 +23,6 @@ in
       ../user-modules
 
       ./fabian/code.nix
-      ./fabian/gpg.nix
-      ./fabian/java.nix
-      ./fabian/jetbrains.nix
-      ./fabian/kdeconnect.nix
-      ./fabian/keepassxc.nix
-      ./fabian/latex.nix
-      ./fabian/nixpkgs.nix
-      ./fabian/node.nix
-      ./fabian/plasma.nix
-      ./fabian/school.nix
-      ./fabian/shell.nix
-      ./fabian/supabase.nix
     ];
 
     home.packages = with pkgs; [

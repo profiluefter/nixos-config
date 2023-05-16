@@ -10,6 +10,8 @@
     "android"
     "desktop"
     "school"
+    "coding"
+    "latex"
     "hardware-envy"
   ];
 }

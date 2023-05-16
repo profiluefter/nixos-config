@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib2, config, ... }:
 {
   programs.git = {
     enable = true;
@@ -29,5 +29,5 @@
 
   programs.bash.initExtra = "export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)";
 
-  home.packages = [ pkgs.kleopatra ];
+  home.packages = lib2.mkIfWorkload config "desktop" [ pkgs.kleopatra ];
 }

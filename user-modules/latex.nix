@@ -1,6 +1,6 @@
-{ pkgs, ... }:
+{ pkgs, lib2, config, ... }:
 {
-  home.packages = with pkgs; [
+  home.packages = with pkgs; lib2.mkIfWorkload config "latex" [
     lyx
     (texlive.combine {
       inherit (texlive) scheme-medium

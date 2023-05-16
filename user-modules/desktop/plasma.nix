@@ -1,11 +1,11 @@
-{ pkgs, ... }:
+{ pkgs, config, lib2, ... }:
 {
-  home.packages = with pkgs; [
+  home.packages = with pkgs; lib2.mkIfWorkload config "desktop" [
     ark
   ];
 
   # https://github.com/pjones/plasma-manager/blob/trunk/example/home.nix
-  programs.plasma = {
+  programs.plasma = lib2.mkIfWorkload config "desktop" {
     enable = true;
 
     workspace.clickItemTo = "select";
