@@ -13,6 +13,7 @@ with lib;
     ./coding-tools.nix
     ./gpg.nix
     ./latex.nix
+    ./nix-index.nix
     ./nixpkgs.nix
     ./school.nix
     ./shell.nix

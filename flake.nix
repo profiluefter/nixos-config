@@ -18,6 +18,9 @@
   inputs.plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
   inputs.plasma-manager.inputs.home-manager.follows = "home-manager";
 
+  inputs.nix-index-database.url = "github:Mic92/nix-index-database";
+  inputs.nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+
   outputs = { self, nixpkgs, nixpkgs-unstable, sops-nix, peerix, impermanence, home-manager, plasma-manager, ... }@args:
     let
       makeNixOSConfiguration = hostname: system: additionalConfig:

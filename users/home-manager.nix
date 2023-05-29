@@ -1,4 +1,4 @@
-{ config, plasma-manager, ... }:
+{ config, plasma-manager, nix-index-database, ... }:
 let
   topConfig = config;
 in
@@ -16,6 +16,7 @@ in
 
     imports = [
       plasma-manager.homeManagerModules.plasma-manager
+      nix-index-database.hmModules.nix-index
 
       ../user-modules
 
