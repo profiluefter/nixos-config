@@ -10,6 +10,7 @@ with lib;
 
     ./cross-compilation.nix
     ./desktop.nix
+    ./nix.nix
     ./partitions.nix
     ./steam.nix
     ./virtualbox.nix
