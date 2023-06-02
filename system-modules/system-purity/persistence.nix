@@ -69,6 +69,7 @@ in
         directories = [
           ".cache"
           ".gradle"
+          ".local/share/direnv"
           ".local/share/JetBrains"
           ".local/share/Steam"
           ".local/share/TelegramDesktop"
