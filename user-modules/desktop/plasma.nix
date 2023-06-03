@@ -27,6 +27,7 @@
 
     files."kdeglobals" = {
       "KDE"."LookAndFeelPackage" = "org.kde.breezedark.desktop";
+      "General"."fixed" = "JetBrainsMono Nerd Font,10,-1,5,50,0,0,0,0,0";
     };
 
     files."kdedefaults/kdeglobals" = {
