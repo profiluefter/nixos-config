@@ -8,7 +8,7 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages = [
       pkgs.inotify-tools
-      (pkgs.writeShellScriptBin "fs-watch" "inotifywait -m -e modify -r $@")
+      (pkgs.writeShellScriptBin "fs-watch" "inotifywait -m -e modify -r $@ | grep --invert-match 'discord'")
       (pkgs.writeShellScriptBin "fs-diff" ''
         set -euo pipefail
 
