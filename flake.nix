@@ -63,7 +63,9 @@
       nixosConfigurations.nixos-testbench = makeNixOSConfiguration "nixos-testbench" "x86_64-linux" [ ./devices/nixos-testbench/configuration.nix ];
       nixosConfigurations.srv0 = makeNixOSConfiguration "srv0" "aarch64-linux" [ ./devices/srv0/configuration.nix ];
       nixosConfigurations.srv0-image = makeNixOSConfiguration "srv0" "aarch64-linux" [ ./devices/srv0/configuration.nix
-        "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix" ];
-      images.srv0 = self.nixosConfigurations.srv0-image.config.system.build.sdImage;
+        "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
+        { boot.loader.raspberryPi.enable = nixpkgs.lib.mkForce false; } ];
+
+      packages.x86_64-linux.srv0-image = self.nixosConfigurations.srv0-image.config.system.build.sdImage;
     };
 }
