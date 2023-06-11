@@ -8,6 +8,7 @@ with lib;
   imports = [
     ./desktop
     ./hardware
+    ./vim
 
     ./android.nix
     ./coding-tools.nix
