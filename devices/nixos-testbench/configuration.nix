@@ -5,4 +5,7 @@
     ./hardware-configuration.nix
     ./network.nix
   ];
+
+  profi.workloads = [
+  ];
 }
