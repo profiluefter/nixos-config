@@ -44,6 +44,7 @@
           modules = [
             # overlay for pkgs.unstable
             { nixpkgs.overlays = [ overlay-unstable ]; }
+            { system.configurationRevision = self.rev or "dirty"; }
 
             sops-nix.nixosModules.sops
             peerix.nixosModules.peerix
