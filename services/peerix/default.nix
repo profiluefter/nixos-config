@@ -1,4 +1,5 @@
 { config, peerix, system, lib, ... }:
+lib.mkIf (system == "x86_64-linux") # peerix doesn't compile on aarch64
 {
   services.peerix = {
     enable = true;

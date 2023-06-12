@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
   environment.systemPackages = [ pkgs.sops ];
 
@@ -34,7 +34,7 @@
     group = config.users.users.fabian.group;
   };
 
-  sops.secrets.peerixPrivateKeys = {
+  sops.secrets.peerixPrivateKeys = lib.mkIf config.services.peerix.enable {
     format = "binary";
     sopsFile = ./secrets/peerix-private.json;
     mode = "0400";
