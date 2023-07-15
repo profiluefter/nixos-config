@@ -21,10 +21,12 @@
   inputs.nix-index-database.url = "github:Mic92/nix-index-database";
   inputs.nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
+  inputs.nix-alien.url = "github:thiagokokada/nix-alien";
+
   inputs.nixos-generators.url = "github:nix-community/nixos-generators";
   inputs.nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, sops-nix, peerix, impermanence, home-manager, plasma-manager, nixos-generators, ... }@args:
+  outputs = { self, nixpkgs, nixpkgs-unstable, sops-nix, peerix, impermanence, home-manager, nixos-generators, ... }@args:
     let
       makeNixOSConfiguration = hostname: system: additionalConfig:
         let

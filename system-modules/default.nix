@@ -8,6 +8,7 @@ with lib;
   imports = [
     ./system-purity
 
+    ./compatibility.nix
     ./cross-compilation.nix
     ./desktop.nix
     ./nix.nix
