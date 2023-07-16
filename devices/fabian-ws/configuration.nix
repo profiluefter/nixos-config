@@ -17,5 +17,7 @@
     "coding"
     "latex"
     "gaming"
+    "cross-compile"
+    "docker"
   ];
 }

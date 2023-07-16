@@ -13,5 +13,7 @@
     "coding"
     "latex"
     "hardware-envy"
+    "cross-compile"
+    "docker"
   ];
 }

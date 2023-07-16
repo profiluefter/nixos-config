@@ -1,6 +1,6 @@
-{ pkgs, ... }:
+{ pkgs, lib2, config, ... }:
 {
-  home.packages = [
+  home.packages = lib2.mkIfWorkload config "desktop" [
     pkgs.libsForQt5.yakuake
     (pkgs.makeAutostartItem {
       name = "yakuake";
@@ -9,5 +9,6 @@
     })
   ];
 
-  programs.plasma.files."yakuakerc"."Dialogs"."FirstRun" = false;
+  programs.plasma.files."yakuakerc"."Dialogs"."FirstRun" =
+    lib2.mkIfWorkload config "desktop" false;
 }

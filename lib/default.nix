@@ -8,6 +8,8 @@ let
     "coding"
     "latex"
     "gaming"
+    "cross-compile"
+    "docker"
 
     "hardware-envy"
   ];

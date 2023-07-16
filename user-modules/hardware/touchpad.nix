@@ -1,6 +1,6 @@
 { pkgs, lib2, config, ... }:
 {
-  home.packages = [ pkgs.libinput ];
+  home.packages = lib2.mkIfWorkload config "desktop" [ pkgs.libinput ];
 
   programs.plasma = {
     files."kcminputrc" = lib2.mkIfWorkload config "hardware-envy" {
