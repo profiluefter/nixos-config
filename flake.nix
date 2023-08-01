@@ -74,7 +74,10 @@
         (
           (makeNixOSConfiguration "srv0" "aarch64-linux" [
             ./devices/srv0/configuration.nix
-            { boot.loader.raspberryPi.enable = nixpkgs.lib.mkForce false; }
+            {
+              boot.loader.raspberryPi.enable = nixpkgs.lib.mkForce false;
+              sdImage.compressImage = false;
+            }
           ]) //
           { format = "sd-aarch64-installer"; }
         );
