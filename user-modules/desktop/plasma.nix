@@ -25,12 +25,12 @@
       yakuake.toggle-window-state = [ "Ctrl+F12" ];
     };
 
-    files."kdeglobals" = {
+    configFile."kdeglobals" = {
       "KDE"."LookAndFeelPackage" = "org.kde.breezedark.desktop";
       "General"."fixed" = "JetBrainsMono Nerd Font,10,-1,5,50,0,0,0,0,0";
     };
 
-    files."kdedefaults/kdeglobals" = {
+    configFile."kdedefaults/kdeglobals" = {
       "General"."ColorScheme" = "BreezeDark";
       "Icons"."Theme" = "breeze-dark";
       "KDE"."widgetStyle" = "Breeze";
