@@ -6,6 +6,7 @@ with lib;
   };
 
   imports = [
+    ./ctf
     ./desktop
     ./hardware
     ./vim

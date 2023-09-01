@@ -10,6 +10,7 @@ let
     "gaming"
     "cross-compile"
     "docker"
+    "ctf"
 
     "hardware-envy"
   ];

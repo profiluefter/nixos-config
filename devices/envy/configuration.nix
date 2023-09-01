@@ -15,5 +15,6 @@
     "hardware-envy"
     "cross-compile"
     "docker"
+    "ctf"
   ];
 }

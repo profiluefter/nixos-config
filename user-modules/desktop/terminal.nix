@@ -9,6 +9,8 @@
     })
   ];
 
-  programs.plasma.configFile."yakuakerc"."Dialogs"."FirstRun" =
-    lib2.mkIfWorkload config "desktop" false;
+  programs.plasma.configFile."yakuakerc" = lib2.mkIfWorkload config "desktop" {
+    "Dialogs"."FirstRun" = false;
+    "Window"."KeepOpen" = false;
+  };
 }
