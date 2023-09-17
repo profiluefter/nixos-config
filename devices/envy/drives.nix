@@ -41,7 +41,7 @@
                     then
                       [ "compress=zstd" "noatime" ]
                     else
-                      null;
+                      [];
                   };
                 }) (builtins.attrNames subvolumes);
               in
