@@ -70,6 +70,8 @@
       nixosConfigurations.nixos-testbench = makeNixOS "nixos-testbench" "x86_64-linux" [ ./devices/nixos-testbench/configuration.nix ];
       nixosConfigurations.srv0 = makeNixOS "srv0" "aarch64-linux" [ ./devices/srv0/configuration.nix ];
 
+      diskoConfigurations.envy = import ./devices/envy/drives.nix;
+
       packages.x86_64-linux.srv0-image = nixos-generators.nixosGenerate
         (
           (makeNixOSConfiguration "srv0" "aarch64-linux" [
