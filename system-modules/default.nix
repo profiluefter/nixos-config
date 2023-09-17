@@ -8,6 +8,7 @@ with lib;
   imports = [
     ./system-purity
 
+    ./cifs.nix
     ./compatibility.nix
     ./cross-compilation.nix
     ./desktop.nix
