@@ -35,7 +35,7 @@
                 definitions = map (vol: {
                   name = "/nix-os" + vol;
                   value = rec {
-                    mountpoint = getAttr vol subvolumes;
+                    mountpoint = builtins.getAttr vol subvolumes;
                     mountOptions = if
                       mountpoint != null
                     then
@@ -43,9 +43,9 @@
                     else
                       null;
                   };
-                }) (attrNames subvolumes);
+                }) (builtins.attrNames subvolumes);
               in
-                listToAttrs definitions;
+                builtins.listToAttrs definitions;
             };
           };
         };
