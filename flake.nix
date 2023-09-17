@@ -26,7 +26,10 @@
   inputs.nixos-generators.url = "github:nix-community/nixos-generators";
   inputs.nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, sops-nix, peerix, impermanence, home-manager, nixos-generators, ... }@args:
+  inputs.disko.url = "github:nix-community/disko";
+  inputs.disko.inputs.nixpkgs.follows = "nixpkgs";
+
+  outputs = { self, nixpkgs, nixpkgs-unstable, sops-nix, peerix, impermanence, home-manager, nixos-generators, disko, ... }@args:
     let
       makeNixOSConfiguration = hostname: system: additionalConfig:
         let
@@ -55,6 +58,7 @@
             peerix.nixosModules.peerix
             impermanence.nixosModule
             home-manager.nixosModule
+            disko.nixosModules.disko
 
             { networking.hostName = hostname; }
 

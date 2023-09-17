@@ -11,17 +11,19 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  profi.systemPurity = {
-    enable = true;
-    rollback = true;
-  };
+#  profi.systemPurity = {
+#    enable = true;
+#    rollback = true;
+#  };
+#
+#  profi.partitions = {
+#    enable = true;
+#    btrfsDevice = "/dev/disk/by-uuid/4dfdf851-9acb-42d4-b45b-de50bee04755";
+#    subvolPrefix = "nix-os/";
+#    bootDevice = "/dev/disk/by-uuid/EC6A-D41C";
+#  };
 
-  profi.partitions = {
-    enable = true;
-    btrfsDevice = "/dev/disk/by-uuid/4dfdf851-9acb-42d4-b45b-de50bee04755";
-    subvolPrefix = "nix-os/";
-    bootDevice = "/dev/disk/by-uuid/EC6A-D41C";
-  };
+  disko.devices = (import ./drives.nix { ssd-disk = "/dev/nvme0n1"; }).disko.devices;
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
