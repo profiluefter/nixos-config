@@ -36,6 +36,17 @@
       "KDE"."widgetStyle" = "Breeze";
     };
 
+#    configFile."plasma-org.kde.plasma.desktop-appletsrc" = {
+#      "Containments.1.Wallpaper.org.kde.image.General"."Image" = "file:///home/fabian/Downloads/wallhaven-3lrp5y.jpg"; # TODO: make derivation
+#    };
+
     # .config/gtk-4.0/settings.ini
   };
+
+  programs.bash.bashrcExtra = ''
+    plasma-apply-wallpaperimage ${builtins.fetchurl {
+      url = "https://w.wallhaven.cc/full/3l/wallhaven-3lrp5y.jpg";
+      sha256 = "0a9p7r9v9sagxmh9c6r0x9i9j71w5ndrc1ih3gaxy1sak5jfz9xy";
+    }}
+  '';
 }
