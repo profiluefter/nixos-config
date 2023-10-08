@@ -8,6 +8,6 @@
     linux   /vmlinuz-linux-zen
     initrd  /intel-ucode.img
     initrd  /initramfs-linux-zen.img
-    options root="LABEL=linux" rootflags="subvol=arch-os" rw quiet splash log_level=3 udev.log_level=3
+    options root="PARTLABEL=disk-ssd-btrfs" rootflags="subvol=arch-os" rw quiet splash log_level=3 udev.log_level=3
   '';
 }
