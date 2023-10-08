@@ -27,6 +27,7 @@ in
         directories = [
           ".config/JetBrains"
           ".config/discord"
+          ".config/github-copilot"
           ".config/kdeconnect"
           ".config/keepassxc"
           ".gnupg"
