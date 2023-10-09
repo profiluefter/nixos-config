@@ -10,7 +10,7 @@ let
 in
 with lib2;
 {
-  home.packages = mkIfWorkload config "desktop" [ pkgs.discord ];
+  home.packages = mkIfWorkload config "desktop" [ pkgs.unstable.discord ];
 
   xdg.desktopEntries = mkIfWorkload config "desktop" {
     discord = {
