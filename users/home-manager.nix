@@ -1,4 +1,4 @@
-{ config, plasma-manager, nix-index-database, ... }:
+{ config, inputs, ... }:
 let
   topConfig = config;
 in
@@ -15,8 +15,8 @@ in
     profi.workloads = topConfig.profi.workloads;
 
     imports = [
-      plasma-manager.homeManagerModules.plasma-manager
-      nix-index-database.hmModules.nix-index
+      inputs.plasma-manager.homeManagerModules.plasma-manager
+      inputs.nix-index-database.hmModules.nix-index
 
       ../user-modules
 

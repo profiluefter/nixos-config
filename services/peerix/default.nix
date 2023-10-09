@@ -1,9 +1,9 @@
-{ config, peerix, system, lib, ... }:
+{ config, inputs, system, lib, ... }:
 lib.mkIf (system == "x86_64-linux") # peerix doesn't compile on aarch64
 {
   services.peerix = {
     enable = true;
-    package = peerix.packages.${system}.peerix;
+    package = inputs.peerix.packages.${system}.peerix;
     privateKeyFile = config.sops.secrets.peerixPrivateKeys.path;
     publicKeyFile = ./peerix-public;
     user = config.users.users.peerix.name;

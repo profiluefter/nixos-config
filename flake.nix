@@ -49,7 +49,10 @@
         {
           inherit system;
 
-          specialArgs = { inherit system lib2; } // args;
+          specialArgs = {
+            inherit system lib2;
+            inputs = args;
+          };
 
           modules = [
             # overlay for pkgs.unstable

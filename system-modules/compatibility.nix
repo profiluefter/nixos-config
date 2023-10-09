@@ -1,8 +1,8 @@
-{ nix-alien, system, ... }:
+{ inputs, system, ... }:
 {
   programs.nix-ld.enable = true;
 
   environment.systemPackages = [
-    nix-alien.packages.${system}.nix-alien
+    inputs.nix-alien.packages.${system}.nix-alien
   ];
 }
