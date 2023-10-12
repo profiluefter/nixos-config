@@ -79,6 +79,7 @@ in
           ".tldrc"
           ".vagrant.d/boxes"
           "Downloads"
+          "VirtualBox VMs"
         ];
       };
     };
