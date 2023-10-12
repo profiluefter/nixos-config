@@ -77,6 +77,7 @@ in
           ".local/share/TelegramDesktop"
           ".local/state/wireplumber" # persist audio volumes
           ".tldrc"
+          ".vagrant.d/boxes"
           "Downloads"
         ];
       };
