@@ -24,6 +24,8 @@
   inputs.nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
   inputs.nix-alien.url = "github:thiagokokada/nix-alien";
+  inputs.nix-alien.inputs.nixpkgs.follows = "nixpkgs";
+  inputs.nix-alien.inputs.nix-index-database.follows = "nix-index-database";
 
   inputs.nixos-generators.url = "github:nix-community/nixos-generators";
   inputs.nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
