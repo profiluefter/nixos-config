@@ -45,8 +45,9 @@
 
   programs.bash.bashrcExtra = ''
     plasma-apply-wallpaperimage ${builtins.fetchurl {
-      url = "https://w.wallhaven.cc/full/3l/wallhaven-3lrp5y.jpg";
-      sha256 = "0a9p7r9v9sagxmh9c6r0x9i9j71w5ndrc1ih3gaxy1sak5jfz9xy";
+      url = "https://drive.google.com/uc?export=download&id=1q-liWOtp6nDQVfj3_p1R_TAfvaOsHdH_";
+      sha256 = "1k8mgjpq3075nbp7h6qkkmzal4y9gl0wpvy8hn3cjl5pyxbmsxm6";
+      name = "background-intellij";
     }}
   '';
 }
