@@ -70,6 +70,7 @@ in
         directories = [
           ".cache"
           ".cargo/registry"
+          ".config/VirtualBox"
           ".gradle"
           ".local/share/direnv"
           ".local/share/JetBrains"
