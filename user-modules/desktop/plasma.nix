@@ -37,11 +37,12 @@
     };
 
     configFile."powermanagementprofilesrc" = {
-      "AC.PowerProfile"."profile" = "performance";
-      "AC.SuspendSession"."idleTime" = null;
-      "AC.SuspendSession"."suspendType" = null;
-      "Battery.PowerProfile"."profile" = "balanced";
-      "LowBattery.PowerProfile"."profile" = "power-saver";
+      # TODO: find a way to set this without clearing all defaults
+#      "AC.PowerProfile"."profile" = "performance";
+#      "AC.SuspendSession"."idleTime" = null;
+#      "AC.SuspendSession"."suspendType" = null;
+#      "Battery.PowerProfile"."profile" = "balanced";
+#      "LowBattery.PowerProfile"."profile" = "power-saver";
     };
 
 #    configFile."plasma-org.kde.plasma.desktop-appletsrc" = {
