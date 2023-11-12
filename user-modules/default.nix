@@ -18,6 +18,7 @@ with lib;
     ./nix-index.nix
     ./nixpkgs.nix
     ./school.nix
+    ./scripts.nix
     ./shell.nix
   ];
 }
