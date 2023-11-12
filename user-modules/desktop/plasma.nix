@@ -36,6 +36,14 @@
       "KDE"."widgetStyle" = "Breeze";
     };
 
+    configFile."powermanagementprofilesrc" = {
+      "AC.PowerProfile"."profile" = "performance";
+      "AC.SuspendSession"."idleTime" = null;
+      "AC.SuspendSession"."suspendType" = null;
+      "Battery.PowerProfile"."profile" = "balanced";
+      "LowBattery.PowerProfile"."profile" = "power-saver";
+    };
+
 #    configFile."plasma-org.kde.plasma.desktop-appletsrc" = {
 #      "Containments.1.Wallpaper.org.kde.image.General"."Image" = "file:///home/fabian/Downloads/wallhaven-3lrp5y.jpg"; # TODO: make derivation
 #    };
