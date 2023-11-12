@@ -10,7 +10,7 @@
       signByDefault = true;
     };
 
-    delta.enable = true; # TODO: try out
+    delta.enable = true;
   };
 
   programs.gpg = {

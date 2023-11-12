@@ -5,7 +5,5 @@
   home.packages = with pkgs; lib2.mkIfWorkload config "coding" [
     nodejs
     yarn
-
-    pkgs.unstable.supabase-cli
   ];
 }
