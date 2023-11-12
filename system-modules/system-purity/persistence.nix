@@ -57,6 +57,7 @@ in
 
       directories = [
         "/etc/NetworkManager/system-connections"
+        "/var/lib/bluetooth"
         { directory = "/var/lib/syncthing"; user = config.services.syncthing.user; group = config.services.syncthing.group; mode = "700"; }
         "/var/lib/docker"
         "/var/lib/systemd/backlight/"
