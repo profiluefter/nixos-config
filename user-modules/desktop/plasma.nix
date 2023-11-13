@@ -38,16 +38,16 @@
 
     configFile."powermanagementprofilesrc" = {
       # TODO: find a way to set this without clearing all defaults
-#      "AC.PowerProfile"."profile" = "performance";
-#      "AC.SuspendSession"."idleTime" = null;
-#      "AC.SuspendSession"."suspendType" = null;
-#      "Battery.PowerProfile"."profile" = "balanced";
-#      "LowBattery.PowerProfile"."profile" = "power-saver";
+      #      "AC.PowerProfile"."profile" = "performance";
+      #      "AC.SuspendSession"."idleTime" = null;
+      #      "AC.SuspendSession"."suspendType" = null;
+      #      "Battery.PowerProfile"."profile" = "balanced";
+      #      "LowBattery.PowerProfile"."profile" = "power-saver";
     };
 
-#    configFile."plasma-org.kde.plasma.desktop-appletsrc" = {
-#      "Containments.1.Wallpaper.org.kde.image.General"."Image" = "file:///home/fabian/Downloads/wallhaven-3lrp5y.jpg"; # TODO: make derivation
-#    };
+    #    configFile."plasma-org.kde.plasma.desktop-appletsrc" = {
+    #      "Containments.1.Wallpaper.org.kde.image.General"."Image" = "file:///home/fabian/Downloads/wallhaven-3lrp5y.jpg"; # TODO: make derivation
+    #    };
 
     # .config/gtk-4.0/settings.ini
   };

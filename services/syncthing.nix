@@ -24,7 +24,7 @@ in
     # TODO: don't share everything with everyone, instead clean this section up and specify individual devices
     folders =
       let
-        all-devices = ["srv0" "qnap" "fabian-ws" "fabian-ws nix-os" "Pixel 2 XL" "Envy Arch" "Envy NixOS" "acsc-laptop"];
+        all-devices = [ "srv0" "qnap" "fabian-ws" "fabian-ws nix-os" "Pixel 2 XL" "Envy Arch" "Envy NixOS" "acsc-laptop" ];
         makeFolder = id: name:
           {
             inherit id;
@@ -32,23 +32,23 @@ in
             devices = all-devices;
           };
       in
-        {
-          "scans" = makeFolder "mt7nr-50dl7" "scans";
-          "passwords" = makeFolder "yhe6x-62vk3" "passwords";
-          "school" = makeFolder "73wqj-syzlb" "school";
-          "school-pos2020-21" = makeFolder "xodip-oqysp" "school-pos2020-21";
-          "school-pos2021-22" = makeFolder "jae5j-cxume" "school-pos2021-22";
-          "school22-23" = makeFolder "zshij-ca9kc" "school22-23";
-          "code-cpp" = makeFolder "yhwae-wg5ng" "code-cpp";
-          "code-cs" = makeFolder "4nzax-i5nof" "code-cs";
-          "code-go" = makeFolder "apgi2-q3rth" "code-go";
-          "code-java" = makeFolder "c7phb-gcknu" "code-java";
-          "code-js" = makeFolder "2yjkt-rzayh" "code-js";
-          "code-misc" = makeFolder "2vrxg-ysjxm" "code-misc";
-          "code-php" = makeFolder "rika3-wehhh" "code-php";
-          "code-python" = makeFolder "5pi5y-k5znl" "code-python";
-          "code-rust" = makeFolder "x9vke-w6nos" "code-rust";
-        };
+      {
+        "scans" = makeFolder "mt7nr-50dl7" "scans";
+        "passwords" = makeFolder "yhe6x-62vk3" "passwords";
+        "school" = makeFolder "73wqj-syzlb" "school";
+        "school-pos2020-21" = makeFolder "xodip-oqysp" "school-pos2020-21";
+        "school-pos2021-22" = makeFolder "jae5j-cxume" "school-pos2021-22";
+        "school22-23" = makeFolder "zshij-ca9kc" "school22-23";
+        "code-cpp" = makeFolder "yhwae-wg5ng" "code-cpp";
+        "code-cs" = makeFolder "4nzax-i5nof" "code-cs";
+        "code-go" = makeFolder "apgi2-q3rth" "code-go";
+        "code-java" = makeFolder "c7phb-gcknu" "code-java";
+        "code-js" = makeFolder "2yjkt-rzayh" "code-js";
+        "code-misc" = makeFolder "2vrxg-ysjxm" "code-misc";
+        "code-php" = makeFolder "rika3-wehhh" "code-php";
+        "code-python" = makeFolder "5pi5y-k5znl" "code-python";
+        "code-rust" = makeFolder "x9vke-w6nos" "code-rust";
+      };
 
     devices = {
       "srv0" = {
@@ -70,11 +70,11 @@ in
         id = "XGJU3CG-T2MC2LL-ATMXTNQ-64VBLXP-J63CW7Q-JOT33HW-M7BCCBP-32EZEAD";
       };
 
-      "Pixel 2 XL" = { 
+      "Pixel 2 XL" = {
         addresses = [ "tcp://10.0.0.50:22000" "dynamic" ];
         id = "ZLMR6UX-DLT45PG-E5OI2HG-76DBBBO-PRKU247-3TKECJ2-LBHB735-OG7BLQP";
       };
-      
+
       "Envy Arch" = {
         addresses = [ "tcp://10.0.0.26:22000" "dynamic" ];
         id = "3UZLIEL-4DG7DWP-EM5E5R3-YUNQWN3-NNSRJOK-VCL5AER-KVJK2PL-AJR3EQM";

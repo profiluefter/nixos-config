@@ -3,8 +3,8 @@ let
   waylandEnabled = false;
   gpuSandboxWorkaround = true;
 
-  waylandFlags = if waylandEnabled then ["--enable-features=UseOzonePlatform" "--ozone-platform=wayland"] else [];
-  gpuSandboxFlags = if gpuSandboxWorkaround then ["--disable-gpu-sandbox"] else [];
+  waylandFlags = if waylandEnabled then [ "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ] else [ ];
+  gpuSandboxFlags = if gpuSandboxWorkaround then [ "--disable-gpu-sandbox" ] else [ ];
 
   discordArgs = waylandFlags ++ gpuSandboxFlags;
 in

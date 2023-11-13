@@ -7,6 +7,6 @@
 
   fileSystems."/boot/firmware" = {
     device = "/dev/disk/by-label/${config.sdImage.firmwarePartitionName or "FIRMWARE"}";
-    options = ["nofail" "noauto"];
+    options = [ "nofail" "noauto" ];
   };
 }

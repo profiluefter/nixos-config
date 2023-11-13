@@ -43,7 +43,7 @@
             config.android_sdk.accept_license = true;
           };
           pkgs = import nixpkgs nixpkgsConfig;
-          lib2 = pkgs.callPackage ./lib {};
+          lib2 = pkgs.callPackage ./lib { };
           overlay-unstable = final: prev: {
             unstable = import nixpkgs-unstable nixpkgsConfig;
           };
@@ -75,7 +75,8 @@
         };
       makeNixOS = hostname: system: additionalConfig:
         nixpkgs.lib.nixosSystem (makeNixOSConfiguration hostname system additionalConfig);
-    in {
+    in
+    {
       nixosConfigurations.fabian-ws = makeNixOS "fabian-ws" "x86_64-linux" [ ./devices/fabian-ws/configuration.nix ];
       nixosConfigurations.envy = makeNixOS "envy" "x86_64-linux" [ ./devices/envy/configuration.nix ];
       nixosConfigurations.nixos-testbench = makeNixOS "nixos-testbench" "x86_64-linux" [ ./devices/nixos-testbench/configuration.nix ];

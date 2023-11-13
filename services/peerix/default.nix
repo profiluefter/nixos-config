@@ -19,5 +19,5 @@ lib.mkIf (system == "x86_64-linux") # peerix doesn't compile on aarch64
     isSystemUser = true;
     group = "peerix";
   };
-  users.groups.peerix = {};
+  users.groups.peerix = { };
 }

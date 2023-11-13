@@ -6,23 +6,23 @@ in
   home-manager.useGlobalPkgs = true;
 
   home-manager.users.fabian = { config, pkgs, ... }:
-  let
-    lib2 = pkgs.callPackage ../lib {};
-  in
-#  builtins.trace lib2
-  {
-    _module.args.lib2 = lib2;
-    profi.workloads = topConfig.profi.workloads;
+    let
+      lib2 = pkgs.callPackage ../lib { };
+    in
+    #  builtins.trace lib2
+    {
+      _module.args.lib2 = lib2;
+      profi.workloads = topConfig.profi.workloads;
 
-    imports = [
-      inputs.plasma-manager.homeManagerModules.plasma-manager
-      inputs.nix-index-database.hmModules.nix-index
+      imports = [
+        inputs.plasma-manager.homeManagerModules.plasma-manager
+        inputs.nix-index-database.hmModules.nix-index
 
-      ../user-modules
+        ../user-modules
 
-      ./fabian/code.nix
-    ];
+        ./fabian/code.nix
+      ];
 
-     home.stateVersion = "23.05";
-  };
+      home.stateVersion = "23.05";
+    };
 }

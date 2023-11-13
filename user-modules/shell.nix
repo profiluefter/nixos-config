@@ -17,7 +17,7 @@
     enable = true;
     shellAliases = {
       cat = "bat";
-#      fnd = "";
+      #      fnd = "";
       yt-music-dl = "yt-dlp -x --embed-thumbnail --embed-metadata --sponsorblock-remove music_offtopic";
       nix-update = "(cd ~/code/misc/nixos-config && exec nix flake update)";
       nix-upgrade = "sudo nixos-rebuild boot --flake git+file:///home/fabian/code/misc/nixos-config?ref=master -j 4 -L";
@@ -28,7 +28,7 @@
 
   programs.fzf = {
     enable = true;
-#    defaultCommand = ""; # TODO: search files and exclude "result" folder from nix
+    #    defaultCommand = ""; # TODO: search files and exclude "result" folder from nix
   };
 
   programs.direnv = {
@@ -38,8 +38,6 @@
 
   programs.starship = {
     enable = true;
-    settings = {
-
-    };
+    settings = { };
   };
 }

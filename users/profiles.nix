@@ -1,7 +1,7 @@
 { config, ... }:
 {
   users.mutableUsers = false;
-  
+
   users.users.root.passwordFile = config.sops.secrets.rootHash.path;
 
   users.users.fabian = {
