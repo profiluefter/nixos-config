@@ -3,5 +3,6 @@
   home.packages = with pkgs; lib2.mkIfWorkload config "desktop" [
     xournalpp
     virt-viewer
+    kmymoney
   ];
 }
