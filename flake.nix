@@ -9,7 +9,6 @@
   inputs.sops-nix.inputs.nixpkgs-stable.follows = "nixpkgs";
 
   inputs.peerix.url = "github:cid-chan/peerix";
-  inputs.peerix.inputs.nixpkgs.follows = "nixpkgs";
 
   inputs.impermanence.url = "github:nix-community/impermanence";
 
