@@ -28,7 +28,7 @@ in
     xkbVariant = "nodeadkeys";
   };
 
-  fonts.fonts = with pkgs; lib2.mkIfWorkload config "desktop" [
+  fonts.packages = with pkgs; lib2.mkIfWorkload config "desktop" [
     corefonts
     noto-fonts
     noto-fonts-emoji
