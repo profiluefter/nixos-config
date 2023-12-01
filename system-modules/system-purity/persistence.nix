@@ -78,6 +78,7 @@ in
           ".local/share/Steam"
           ".local/share/TelegramDesktop"
           ".local/state/wireplumber" # persist audio volumes
+          ".rustup"
           ".tldrc"
           ".vagrant.d/boxes"
           "Downloads"
