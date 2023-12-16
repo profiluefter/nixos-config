@@ -75,6 +75,7 @@ in
           ".gradle"
           ".local/share/direnv"
           ".local/share/JetBrains"
+          ".local/share/nix"
           ".local/share/Steam"
           ".local/share/TelegramDesktop"
           ".local/state/wireplumber" # persist audio volumes
