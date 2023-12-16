@@ -5,6 +5,14 @@
       experimental-features = [ "nix-command" "flakes" ];
       trusted-users = [ "fabian" ];
       auto-optimise-store = true;
+
+      substituters = [
+        "https://cache.garnix.io"
+      ];
+
+      trusted-public-keys = [
+        "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
+      ];
     };
 
     # stolen from https://github.com/Misterio77/nix-starter-configs/blob/fe21fa16704972126a9660622b8464bd215c7894/minimal/nixos/configuration.nix#L44-L50
