@@ -19,7 +19,7 @@
       cat = "bat";
       #      fnd = "";
       yt-music-dl = "yt-dlp -x --embed-thumbnail --embed-metadata --sponsorblock-remove music_offtopic";
-      nix-update = "(cd ~/code/misc/nixos-config && exec nix flake update)";
+      nix-update = "(cd ~/code/misc/nixos-config && exec nix flake update --commit-lock-file)";
       nix-upgrade = "sudo nixos-rebuild boot --flake git+file:///home/fabian/code/misc/nixos-config?ref=master -j 4 -L";
       nix-apply = "sudo nixos-rebuild switch --flake git+file:///home/fabian/code/misc/nixos-config?ref=master -j 4 -L";
       nix-test = "sudo nixos-rebuild test --flake ~/code/misc/nixos-config -j 4 -L";
