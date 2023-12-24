@@ -2,15 +2,14 @@
 {
   programs.bat.enable = true;
   programs.jq.enable = true;
+  programs.micro.enable = true;
 
-  # not yet released?
-  #programs.micro = {
-  #  enable = true;
-  #};
-  home.packages = [
-    pkgs.micro
-    pkgs.tldr
-    pkgs.yt-dlp
+  home.packages = with pkgs; [
+    tldr
+    yt-dlp
+
+    dig
+    ldns
   ];
 
   programs.bash = {
