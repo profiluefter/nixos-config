@@ -8,13 +8,14 @@
 
   profi.workloads = [
     "android"
-    "desktop"
-    "school"
     "coding"
-    "latex"
-    "hardware-envy"
     "cross-compile"
-    "docker"
     "ctf"
+    "desktop"
+    "docker"
+    "gaming"
+    "hardware-envy"
+    "latex"
+    "school"
   ];
 }

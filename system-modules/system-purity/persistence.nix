@@ -32,6 +32,7 @@ in
           ".config/keepassxc"
           ".gnupg"
           ".java"
+          ".local/share/applications"
           ".local/share/kscreen"
           ".local/share/kwalletd"
           ".mozilla"
@@ -57,10 +58,12 @@ in
 
       directories = [
         "/etc/NetworkManager/system-connections"
+        "/root/.cache/mesa_shader_cache"
         "/var/lib/bluetooth"
         { directory = "/var/lib/syncthing"; user = config.services.syncthing.user; group = config.services.syncthing.group; mode = "700"; }
         "/var/lib/docker"
-        "/var/lib/systemd/backlight/"
+        "/var/lib/sddm/.cache"
+        "/var/lib/systemd/backlight"
       ];
 
       users.fabian = {
@@ -73,6 +76,7 @@ in
           ".cargo/registry"
           ".config/VirtualBox"
           ".gradle"
+          ".local/share/baloo"
           ".local/share/direnv"
           ".local/share/JetBrains"
           ".local/share/nix"
@@ -80,6 +84,7 @@ in
           ".local/share/TelegramDesktop"
           ".local/state/wireplumber" # persist audio volumes
           ".rustup"
+          ".steam"
           ".tldrc"
           ".vagrant.d/boxes"
           "Downloads"
