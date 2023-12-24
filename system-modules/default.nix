@@ -18,5 +18,6 @@ with lib;
     ./systemd.nix
     ./tty.nix
     ./virtualbox.nix
+    ./vpn.nix
   ];
 }
