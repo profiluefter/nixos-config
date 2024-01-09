@@ -4,7 +4,7 @@
     ./bootloader.nix
     ./hardware-configuration.nix
 
-    ./nvidia.nix
+    ./amdgpu.nix
     ./soundcard.nix
     ./g910.nix
     #./screens.nix
