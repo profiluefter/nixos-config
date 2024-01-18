@@ -1,4 +1,4 @@
-{ pkgs, config, lib2, ... }:
+{ pkgs, config, lib, lib2, ... }:
 {
   home.packages = with pkgs; lib2.mkIfWorkload config "desktop" [
     ark
@@ -52,11 +52,19 @@
     # .config/gtk-4.0/settings.ini
   };
 
-  programs.bash.bashrcExtra = ''
-    plasma-apply-wallpaperimage ${builtins.fetchurl {
-      url = "https://drive.google.com/uc?export=download&id=1q-liWOtp6nDQVfj3_p1R_TAfvaOsHdH_";
-      sha256 = "1k8mgjpq3075nbp7h6qkkmzal4y9gl0wpvy8hn3cjl5pyxbmsxm6";
-      name = "background-intellij";
-    }}
-  '';
+  home.file.".config/autostart/plasma-wallpaper.desktop".text =
+    let
+      image = builtins.fetchurl {
+        url = "https://drive.google.com/uc?export=download&id=1q-liWOtp6nDQVfj3_p1R_TAfvaOsHdH_";
+        sha256 = "1k8mgjpq3075nbp7h6qkkmzal4y9gl0wpvy8hn3cjl5pyxbmsxm6";
+        name = "background-intellij";
+      };
+      command = "plasma-apply-wallpaperimage ${image}";
+    in
+    ''
+      [Desktop Entry]
+      Name=Set custom plasma wallpaper
+      Type=Application
+      Exec=${command}
+    '';
 }
