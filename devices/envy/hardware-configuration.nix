@@ -30,6 +30,8 @@
   fileSystems."/persist".neededForBoot = true;
   fileSystems."/var/log".neededForBoot = true;
 
+  services.thermald.enable = true;
+
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
