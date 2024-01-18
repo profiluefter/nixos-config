@@ -10,15 +10,6 @@ in
   services.xserver.displayManager.sddm.enable = enabled;
   services.xserver.desktopManager.plasma5.enable = enabled;
 
-  # use unstable sddm to fix environment variables after login with wayland
-  nixpkgs.overlays = [
-    (final: prev: {
-      libsForQt5 = prev.libsForQt5 // {
-        sddm = final.unstable.libsForQt5.sddm;
-      };
-    })
-  ];
-
   # use wayland per default
   services.xserver.displayManager.defaultSession = "plasmawayland";
 
