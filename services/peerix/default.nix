@@ -4,7 +4,7 @@ lib.mkIf (system == "x86_64-linux") # peerix doesn't compile on aarch64
   services.peerix = {
     enable = true;
     package = inputs.peerix.packages.${system}.peerix;
-    privateKeyFile = config.sops.secrets.peerixPrivateKeys.path;
+    privateKeyFile = "/run/secrets/peerix-private";
     publicKey = builtins.replaceStrings [ "\r" "\n" ] [ "" "" ] (builtins.readFile ./peerix-public);
     user = config.users.users.peerix.name;
   };

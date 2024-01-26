@@ -6,38 +6,49 @@
   # The persisted /etc isn't mounted fast enough
   sops.age.sshKeyPaths = [ "/persist/etc/ssh/ssh_host_ed25519_key" ];
 
-  sops.secrets.rootHash = {
-    neededForUsers = true;
-    format = "binary";
-    sopsFile = ./secrets/users/rootHash.json;
-  };
+  sops.secrets =
+    let
+      files = [
+        {
+          sopsFile = ./secrets/vpn.profiluefter.me.yaml;
+          keyPrefix = "vpn-";
+          keys = [ "tls-crypt-v2" "key" "cert" "ca" ];
+        }
+        {
+          sopsFile = ./secrets/users.yaml;
+          keys = [ "rootHash" "userHash" ];
+          neededForUsers = true;
+        }
+        {
+          sopsFile = ./secrets/school.yaml;
+          keys = [ "username" "password" ];
+          keyPrefix = "school-";
+          owner = "fabian";
+          group = "users";
+        }
+        {
+          enable = config.services.peerix.enable;
+          sopsFile = ./secrets/peerix.yaml;
+          keys = [ "private" ];
+          keyPrefix = "peerix-";
+          owner = "peerix";
+        }
+      ];
 
-  sops.secrets.userHash = {
-    neededForUsers = true;
-    format = "binary";
-    sopsFile = ./secrets/users/userHash.json;
-  };
-
-  sops.secrets.schoolUser = {
-    format = "binary";
-    sopsFile = ./secrets/school/username.json;
-    mode = "0400";
-    owner = config.users.users.fabian.name;
-    group = config.users.users.fabian.group;
-  };
-
-  sops.secrets.schoolPassword = {
-    format = "binary";
-    sopsFile = ./secrets/school/password.json;
-    mode = "0400";
-    owner = config.users.users.fabian.name;
-    group = config.users.users.fabian.group;
-  };
-
-  sops.secrets.peerixPrivateKeys = lib.mkIf config.services.peerix.enable {
-    format = "binary";
-    sopsFile = ./secrets/peerix-private.json;
-    mode = "0400";
-    owner = config.users.users.peerix.name;
-  };
+      entries = builtins.map
+        ({ enable ? true, keyPrefix ? "", keys, ... }@args:
+          let
+            sopsAttrs = builtins.removeAttrs args [ "enable" "keyPrefix" "keys" ];
+            keyEntries = builtins.map
+              (key: {
+                name = keyPrefix + key;
+                value = { inherit key; } // sopsAttrs;
+              })
+              keys;
+          in
+          if enable then keyEntries else [ ]
+        )
+        files;
+    in
+    builtins.listToAttrs (lib.lists.flatten entries);
 }

@@ -34,20 +34,4 @@
       };
     };
   };
-
-  sops.secrets =
-    let
-      vpnSecrets = [ "tls-crypt-v2" "key" "cert" "ca" ];
-      vpnEntries = builtins.map
-        (key: {
-          name = "vpn-${key}";
-          value = {
-            inherit key;
-            sopsFile = ./../secrets/vpn.profiluefter.me.yaml;
-            format = "yaml";
-          };
-        })
-        vpnSecrets;
-    in
-    builtins.listToAttrs vpnEntries;
 }
