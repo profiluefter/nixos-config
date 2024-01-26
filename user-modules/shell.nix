@@ -23,6 +23,13 @@
       nix-apply = "sudo nixos-rebuild switch --flake git+file:///home/fabian/code/misc/nixos-config?ref=master -j 4 -L";
       nix-test = "sudo nixos-rebuild test --flake ~/code/misc/nixos-config -j 4 -L";
     };
+
+    bashrcExtra = ''
+      function load-gitlab-env() {
+        export GITLAB_USERNAME=$(cat /run/secrets/gitlab-username)
+        export GITLAB_ACCESS_TOKEN=$(cat /run/secrets/gitlab-personal-access-token)
+      }
+    '';
   };
 
   programs.fzf = {

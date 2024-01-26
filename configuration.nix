@@ -1,9 +1,5 @@
 { pkgs, ... }:
 {
-  environment.sessionVariables."NIXOS_CONFIG" = "/data/sync/code-misc/nixos-config/configuration.nix";
-
-  # REMEMBER: https://github.com/thiagokokada/nix-alien
-
   # FIXME: xournalpp workaround
   environment.systemPackages = [
     pkgs.gnome.adwaita-icon-theme
@@ -12,6 +8,7 @@
   environment.pathsToLink = [
     "/share/icons"
     "/share/mime"
+    "/share/bash-completion" # for better bash completion according to home-manager docs
   ];
 
   imports = [

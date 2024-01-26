@@ -24,7 +24,6 @@
           keys = [ "username" "password" ];
           keyPrefix = "school-";
           owner = "fabian";
-          group = "users";
         }
         {
           enable = config.services.peerix.enable;
@@ -32,6 +31,12 @@
           keys = [ "private" ];
           keyPrefix = "peerix-";
           owner = "peerix";
+        }
+        {
+          sopsFile = ./secrets/gitlab.yaml;
+          keys = [ "username" "personal-access-token" ];
+          keyPrefix = "gitlab-";
+          owner = "fabian";
         }
       ];
 
