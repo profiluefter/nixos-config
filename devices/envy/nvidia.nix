@@ -1,11 +1,33 @@
 { pkgs, ... }:
 {
   services.xserver.videoDrivers = [ "nvidia" ];
-  #hardware.nvidia.modesetting.enable = true;
-  hardware.nvidia.prime = {
-    offload.enable = true;
-    intelBusId = "PCI:0:2:0";
-    nvidiaBusId = "PCI:1:0:0";
+
+  hardware.nvidia = {
+    modesetting.enable = true;
+    powerManagement.enable = true;
+    prime = {
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;
+      };
+      intelBusId = "PCI:0:2:0";
+      nvidiaBusId = "PCI:1:0:0";
+    };
+  };
+
+  hardware.opengl = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-media-driver
+      intel-vaapi-driver
+      libvdpau-va-gl
+
+      vaapiVdpau
+    ];
+  };
+
+  environment.variables = {
+    VDPAU_DRIVER = "va_gl";
   };
 
   environment.systemPackages = [
