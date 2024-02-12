@@ -6,7 +6,7 @@ let
   waylandFlags = if waylandEnabled then [ "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ] else [ ];
   gpuSandboxFlags = if gpuSandboxWorkaround then [ "--disable-gpu-sandbox" ] else [ ];
 
-  discordArgs = waylandFlags ++ gpuSandboxFlags;
+  discordArgs = waylandFlags ++ gpuSandboxFlags ++ [ "--start-minimized" ];
 in
 with lib2;
 {
