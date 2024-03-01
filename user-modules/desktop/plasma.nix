@@ -8,7 +8,14 @@
   programs.plasma = lib2.mkIfWorkload config "desktop" {
     enable = true;
 
-    workspace.clickItemTo = "select";
+    workspace = {
+      clickItemTo = "select";
+      wallpaper = builtins.fetchurl {
+        url = "https://drive.google.com/uc?export=download&id=1q-liWOtp6nDQVfj3_p1R_TAfvaOsHdH_";
+        sha256 = "1k8mgjpq3075nbp7h6qkkmzal4y9gl0wpvy8hn3cjl5pyxbmsxm6";
+        name = "background-intellij";
+      };
+    };
 
     hotkeys.commands = {
       "Launch Konsole" = {
@@ -24,6 +31,29 @@
 
       yakuake.toggle-window-state = [ "Ctrl+F12" ];
     };
+
+    spectacle.shortcuts = {
+      captureRectangularRegion = "Print";
+      captureCurrentMonitor = "Shift+Print";
+    };
+
+    panels = [
+      {
+        # bottom task bar
+        height = 44;
+        minLength = 1920;
+        location = "floating";
+        widgets = [
+          "org.kde.plasma.kickoff"
+          "org.kde.plasma.pager"
+          "org.kde.plasma.icontasks"
+          "org.kde.plasma.marginsseperator"
+          "org.kde.plasma.systemtray"
+          "org.kde.plasma.digitalclock"
+          "org.kde.plasma.showdesktop"
+        ];
+      }
+    ];
 
     configFile."kdeglobals" = {
       "KDE"."LookAndFeelPackage" = "org.kde.breezedark.desktop";
@@ -45,26 +75,6 @@
       #      "LowBattery.PowerProfile"."profile" = "power-saver";
     };
 
-    #    configFile."plasma-org.kde.plasma.desktop-appletsrc" = {
-    #      "Containments.1.Wallpaper.org.kde.image.General"."Image" = "file:///home/fabian/Downloads/wallhaven-3lrp5y.jpg"; # TODO: make derivation
-    #    };
-
     # .config/gtk-4.0/settings.ini
   };
-
-  home.file.".config/autostart/plasma-wallpaper.desktop".text =
-    let
-      image = builtins.fetchurl {
-        url = "https://drive.google.com/uc?export=download&id=1q-liWOtp6nDQVfj3_p1R_TAfvaOsHdH_";
-        sha256 = "1k8mgjpq3075nbp7h6qkkmzal4y9gl0wpvy8hn3cjl5pyxbmsxm6";
-        name = "background-intellij";
-      };
-      command = "plasma-apply-wallpaperimage ${image}";
-    in
-    ''
-      [Desktop Entry]
-      Name=Set custom plasma wallpaper
-      Type=Application
-      Exec=${command}
-    '';
 }
