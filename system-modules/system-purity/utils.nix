@@ -8,7 +8,7 @@ in
   config = mkIf cfg.enable {
     environment.systemPackages = [
       pkgs.inotify-tools
-      (pkgs.writeShellScriptBin "fs-watch" "inotifywait -m -e modify -r $@ | grep --invert-match 'discord'")
+      (pkgs.writeShellScriptBin "fs-watch" "${pkgs.inotify-tools}/bin/inotifywait -m -e modify -r --excludei 'discord'")
       (pkgs.writeShellScriptBin "fs-diff" ''
         set -euo pipefail
 
@@ -34,6 +34,27 @@ in
           else
             echo "$path"
           fi
+        done
+      '')
+      (pkgs.writeShellScriptBin "file-diff" ''
+        set -euo pipefail
+
+        if [[ $# -ne 1 ]]; then
+          echo "Usage: file-diff <file>"
+          exit 1
+        fi
+
+        if [[ ! -f $1 ]]; then
+          echo "The file '$1' does not exist"
+          exit 1
+        fi
+
+        FILE="$1"
+        FILE_CONTENT=$(cat "$FILE")
+
+        while true; do
+          ${pkgs.inotify-tools}/bin/inotifywait -e modify --quiet "$FILE"
+          ${pkgs.delta}/bin/delta <(echo "$FILE_CONTENT") "$FILE" || true
         done
       '')
     ];
