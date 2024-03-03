@@ -2,6 +2,9 @@
 {
   home.packages = with pkgs; lib2.mkIfWorkload config "desktop" [
     ark
+
+    libsForQt5.applet-window-appmenu
+    libsForQt5.applet-window-buttons
   ];
 
   # https://github.com/pjones/plasma-manager/blob/trunk/example/home.nix
@@ -42,15 +45,25 @@
         # bottom task bar
         height = 44;
         minLength = 1920;
-        location = "floating";
+        location = "bottom";
         widgets = [
           "org.kde.plasma.kickoff"
-          "org.kde.plasma.pager"
           "org.kde.plasma.icontasks"
           "org.kde.plasma.marginsseperator"
           "org.kde.plasma.systemtray"
+        ];
+      }
+
+      {
+        # top menu bar
+        height = 30;
+        location = "top";
+        widgets = [
+          "org.kde.windowappmenu"
+          "org.kde.plasma.marginsseperator"
+          "org.kde.plasma.pager"
           "org.kde.plasma.digitalclock"
-          "org.kde.plasma.showdesktop"
+          "org.kde.windowbuttons"
         ];
       }
     ];
