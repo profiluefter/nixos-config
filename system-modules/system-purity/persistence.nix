@@ -19,6 +19,7 @@ in
       users.fabian = {
         files = [
           ".bash_history"
+          ".config/plasma-org.kde.plasma.desktop-appletsrc" # plasma panel config
           ".lyx/session" # last opened file and shell-escape permission
           ".wakatime.cfg"
           ".wakatime-internal.cfg"
