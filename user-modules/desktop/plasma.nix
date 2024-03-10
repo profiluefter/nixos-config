@@ -40,33 +40,33 @@
       captureCurrentMonitor = "Shift+Print";
     };
 
-    panels = [
-      {
-        # bottom task bar
-        height = 44;
-        minLength = 1920;
-        location = "bottom";
-        widgets = [
-          "org.kde.plasma.kickoff"
-          "org.kde.plasma.icontasks"
-          "org.kde.plasma.marginsseperator"
-          "org.kde.plasma.systemtray"
-        ];
-      }
-
-      {
-        # top menu bar
-        height = 30;
-        location = "top";
-        widgets = [
-          "org.kde.windowappmenu"
-          "org.kde.plasma.marginsseperator"
-          "org.kde.plasma.pager"
-          "org.kde.plasma.digitalclock"
-          "org.kde.windowbuttons"
-        ];
-      }
-    ];
+#    panels = [
+#      {
+#        # bottom task bar
+#        height = 44;
+#        minLength = 1920;
+#        location = "bottom";
+#        widgets = [
+#          "org.kde.plasma.kickoff"
+#          "org.kde.plasma.icontasks"
+#          "org.kde.plasma.marginsseperator"
+#          "org.kde.plasma.systemtray"
+#        ];
+#      }
+#
+#      {
+#        # top menu bar
+#        height = 30;
+#        location = "top";
+#        widgets = [
+#          "org.kde.windowappmenu"
+#          "org.kde.plasma.marginsseperator"
+#          "org.kde.plasma.pager"
+#          "org.kde.plasma.digitalclock"
+#          "org.kde.windowbuttons"
+#        ];
+#      }
+#    ];
 
     configFile."kdeglobals" = {
       "KDE"."LookAndFeelPackage" = "org.kde.breezedark.desktop";
