@@ -21,7 +21,8 @@
     };
 
     hotkeys.commands = {
-      "Launch Konsole" = {
+      "launch-konsole" = {
+        name = "Launch Konsole";
         key = "Meta+K";
         command = "konsole";
       };
