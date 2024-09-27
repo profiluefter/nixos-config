@@ -15,7 +15,7 @@
   inputs.home-manager.url = "github:nix-community/home-manager/release-23.11";
   inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-  inputs.plasma-manager.url = "github:pjones/plasma-manager";
+  inputs.plasma-manager.url = "github:pjones/plasma-manager/plasma-5";
   inputs.plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
   inputs.plasma-manager.inputs.home-manager.follows = "home-manager";
 
