@@ -24,6 +24,7 @@
   services.gpg-agent = {
     enable = true;
     enableSshSupport = true;
+    pinentryPackage = if lib2.hasWorkload config "desktop" then pkgs.pinentry-qt else pkgs.pinentry-curses;
     sshKeys = [ "F14AB18A69F3A862C4AB47DAF3C49AFC6A443015" ];
   };
 
