@@ -1,21 +1,20 @@
 {
   description = "My system configuration";
 
-  inputs.nixpkgs.url = "nixpkgs/nixos-23.11";
+  inputs.nixpkgs.url = "nixpkgs/nixos-24.05";
   inputs.nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
 
   inputs.sops-nix.url = "github:Mic92/sops-nix";
   inputs.sops-nix.inputs.nixpkgs.follows = "nixpkgs";
-  inputs.sops-nix.inputs.nixpkgs-stable.follows = "nixpkgs";
 
   inputs.peerix.url = "github:cid-chan/peerix";
 
   inputs.impermanence.url = "github:nix-community/impermanence";
 
-  inputs.home-manager.url = "github:nix-community/home-manager/release-23.11";
+  inputs.home-manager.url = "github:nix-community/home-manager/release-24.05";
   inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-  inputs.plasma-manager.url = "github:pjones/plasma-manager/plasma-5";
+  inputs.plasma-manager.url = "github:pjones/plasma-manager";
   inputs.plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
   inputs.plasma-manager.inputs.home-manager.follows = "home-manager";
 
@@ -79,21 +78,22 @@
       nixosConfigurations.fabian-ws = makeNixOS "fabian-ws" "x86_64-linux" [ ./devices/fabian-ws/configuration.nix ];
       nixosConfigurations.envy = makeNixOS "envy" "x86_64-linux" [ ./devices/envy/configuration.nix ];
       nixosConfigurations.nixos-testbench = makeNixOS "nixos-testbench" "x86_64-linux" [ ./devices/nixos-testbench/configuration.nix ];
-      nixosConfigurations.srv0 = makeNixOS "srv0" "aarch64-linux" [ ./devices/srv0/configuration.nix ];
+# raspberry pi configuration is currently broken
+#      nixosConfigurations.srv0 = makeNixOS "srv0" "aarch64-linux" [ ./devices/srv0/configuration.nix ];
 
       diskoConfigurations.envy = import ./devices/envy/drives.nix;
 
-      packages.x86_64-linux.srv0-image = nixos-generators.nixosGenerate
-        (
-          (makeNixOSConfiguration "srv0" "aarch64-linux" [
-            ./devices/srv0/configuration.nix
-            {
-              boot.loader.raspberryPi.enable = nixpkgs.lib.mkForce false;
-              sdImage.compressImage = false;
-            }
-          ]) //
-          { format = "sd-aarch64-installer"; }
-        );
+#      packages.x86_64-linux.srv0-image = nixos-generators.nixosGenerate
+#        (
+#          (makeNixOSConfiguration "srv0" "aarch64-linux" [
+#            ./devices/srv0/configuration.nix
+#            {
+#              boot.loader.raspberryPi.enable = nixpkgs.lib.mkForce false;
+#              sdImage.compressImage = false;
+#            }
+#          ]) //
+#          { format = "sd-aarch64-installer"; }
+#        );
 
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
     };

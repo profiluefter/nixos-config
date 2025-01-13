@@ -7,16 +7,16 @@ in
   services.xserver.enable = enabled;
 
   # Enable the KDE Plasma Desktop Environment.
-  services.xserver.displayManager.sddm.enable = enabled;
-  services.xserver.desktopManager.plasma5.enable = enabled;
+  services.displayManager.sddm.enable = enabled;
+  services.desktopManager.plasma6.enable = enabled;
 
   # use wayland per default
-  services.xserver.displayManager.defaultSession = "plasmawayland";
+  services.displayManager.defaultSession = "plasma";
 
   # Configure keymap in X11
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "at";
-    xkbVariant = "nodeadkeys";
+    variant = "nodeadkeys";
   };
 
   fonts.packages = with pkgs; lib2.mkIfWorkload config "desktop" [
