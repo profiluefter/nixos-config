@@ -31,6 +31,7 @@ in
           ".config/github-copilot"
           ".config/kdeconnect"
           ".config/keepassxc"
+          ".config/unity3d"
           ".gnupg"
           ".java"
           ".local/share/applications"
