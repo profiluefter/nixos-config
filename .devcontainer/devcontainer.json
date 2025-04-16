@@ -1,0 +1,8 @@
+{
+  "name": "NixOS Config",
+  "image": "mcr.microsoft.com/vscode/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/devcontainers/features/nix:1": {}
+  },
+  "postCreateCommand": "nix-shell --run 'echo Nix is installed!'"
+}
