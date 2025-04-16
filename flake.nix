@@ -96,5 +96,16 @@
 #        );
 
       formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
+
+      nixosTests = {
+        systemd-services = import ./tests/systemd-services.nix;
+        networking = import ./tests/networking.nix;
+        bootloader = import ./tests/bootloader.nix;
+        openssh = import ./tests/openssh.nix;
+        docker = import ./tests/docker.nix;
+        syncthing = import ./tests/syncthing.nix;
+        hardware-configurations = import ./tests/hardware-configurations.nix;
+        nixos-configurations = import ./tests/nixos-configurations.nix;
+      };
     };
 }
