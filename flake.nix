@@ -83,6 +83,21 @@
 
       diskoConfigurations.envy = import ./devices/envy/drives.nix;
 
+      apps.x86_64-linux.default = self.apps.x86_64-linux.nixos-testbench;
+      apps.x86_64-linux.nixos-testbench = let
+        startScript = nixpkgs.legacyPackages.x86_64-linux.writeShellScript "run-nixos-testbench" ''
+          export NIX_DISK_IMAGE=$(${nixpkgs.legacyPackages.x86_64-linux.coreutils}/bin/mktemp --suffix -nixos-testbench-disk.img)
+          rm "$NIX_DISK_IMAGE" # will be recreated by script
+          trap 'echo "Deleting disk image $NIX_DISK_IMAGE" && rm "$NIX_DISK_IMAGE"' EXIT
+          echo "Starting NixOS testbench VM with disk image: $NIX_DISK_IMAGE"
+          ${self.nixosConfigurations.nixos-testbench.config.system.build.vm}/bin/run-nixos-testbench-vm
+        '';
+      in
+      {
+        type = "app";
+        program = "${startScript}";
+      };
+
 #      packages.x86_64-linux.srv0-image = nixos-generators.nixosGenerate
 #        (
 #          (makeNixOSConfiguration "srv0" "aarch64-linux" [
