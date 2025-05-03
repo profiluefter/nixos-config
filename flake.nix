@@ -31,8 +31,12 @@
   inputs.disko.url = "github:nix-community/disko";
   inputs.disko.inputs.nixpkgs.follows = "nixpkgs";
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, sops-nix, peerix, impermanence, home-manager, nixos-generators, disko, ... }@args:
+  inputs.treefmt-nix.url = "github:numtide/treefmt-nix";
+
+  outputs = { self, nixpkgs, nixpkgs-unstable, sops-nix, peerix, impermanence, home-manager, nixos-generators, disko, treefmt-nix, ... }@args:
     let
+      treefmtEval = treefmt-nix.lib.evalModule nixpkgs.legacyPackages.x86_64-linux ./treefmt.nix;
+
       makeNixOSConfiguration = hostname: system: additionalConfig:
         let
           nixpkgsConfig = {
@@ -110,6 +114,7 @@
 #          { format = "sd-aarch64-installer"; }
 #        );
 
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
+      checks.x86_64-linux.formatting = treefmtEval.config.build.check self;
+      formatter.x86_64-linux = treefmtEval.config.build.wrapper;
     };
 }
