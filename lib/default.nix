@@ -20,13 +20,13 @@ rec {
 
   workloadType = with types; listOf (enum workloads);
 
-  mkIfWorkload = config: workload: content:
+  mkIfWorkload =
+    config: workload: content:
     mkIf (hasWorkload config workload) content;
 
-  hasWorkload = config: workload:
-    if
-      builtins.isList workload
-    then
+  hasWorkload =
+    config: workload:
+    if builtins.isList workload then
       builtins.all (x: hasWorkload config x) workload
     else
       assert builtins.elem workload workloads;

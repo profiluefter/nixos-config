@@ -1,8 +1,5 @@
-{ lib, config, ... }:
+{ lib, ... }:
 with lib;
-let
-  cfg = config.profi.systemPurity;
-in
 {
   imports = [
     ../partitions.nix

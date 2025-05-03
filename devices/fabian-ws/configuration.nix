@@ -1,4 +1,4 @@
-{ lib, host, ... }:
+{ ... }:
 {
   imports = [
     ./bootloader.nix

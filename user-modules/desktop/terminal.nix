@@ -1,4 +1,9 @@
-{ pkgs, lib2, config, ... }:
+{
+  pkgs,
+  lib2,
+  config,
+  ...
+}:
 {
   home.packages = lib2.mkIfWorkload config "desktop" [
     pkgs.libsForQt5.yakuake

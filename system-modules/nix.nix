@@ -1,8 +1,16 @@
-{ lib, inputs, config, ... }:
+{
+  lib,
+  inputs,
+  config,
+  ...
+}:
 {
   nix = {
     settings = {
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       trusted-users = [ "fabian" ];
       auto-optimise-store = true;
 

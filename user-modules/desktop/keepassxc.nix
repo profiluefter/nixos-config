@@ -1,6 +1,15 @@
-{ pkgs, config, lib2, ... }:
+{
+  pkgs,
+  config,
+  lib2,
+  ...
+}:
 let
-  keepassxc-autostart = pkgs.makeAutostartItem { name = "KeePassXC"; srcPrefix = "org.keepassxc."; package = pkgs.keepassxc; };
+  keepassxc-autostart = pkgs.makeAutostartItem {
+    name = "KeePassXC";
+    srcPrefix = "org.keepassxc.";
+    package = pkgs.keepassxc;
+  };
 in
 {
   home.packages = lib2.mkIfWorkload config "desktop" [

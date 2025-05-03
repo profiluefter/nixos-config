@@ -8,7 +8,14 @@
     uid = 1000;
     isNormalUser = true;
     description = "Fabian Gurtner";
-    extraGroups = [ "networkmanager" "wheel" "syncthing" "docker" "keys" "adbusers" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "syncthing"
+      "docker"
+      "keys"
+      "adbusers"
+    ];
 
     hashedPasswordFile = config.sops.secrets.userHash.path;
 

@@ -62,7 +62,12 @@ in
         "/etc/NetworkManager/system-connections"
         "/root/.cache/mesa_shader_cache"
         "/var/lib/bluetooth"
-        { directory = "/var/lib/syncthing"; user = config.services.syncthing.user; group = config.services.syncthing.group; mode = "700"; }
+        {
+          directory = "/var/lib/syncthing";
+          user = config.services.syncthing.user;
+          group = config.services.syncthing.group;
+          mode = "700";
+        }
         "/var/lib/docker"
         "/var/lib/nixos"
         "/var/lib/sddm/.cache"

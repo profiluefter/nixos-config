@@ -1,4 +1,9 @@
-{ pkgs, lib2, config, ... }:
+{
+  pkgs,
+  lib2,
+  config,
+  ...
+}:
 let
   enabled = lib2.hasWorkload config "desktop";
 in
@@ -19,13 +24,15 @@ in
     variant = "nodeadkeys";
   };
 
-  fonts.packages = with pkgs; lib2.mkIfWorkload config "desktop" [
-    corefonts
-    noto-fonts
-    noto-fonts-emoji
-    liberation_ttf
-    jetbrains-mono
-    (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
-    vistafonts
-  ];
+  fonts.packages =
+    with pkgs;
+    lib2.mkIfWorkload config "desktop" [
+      corefonts
+      noto-fonts
+      noto-fonts-emoji
+      liberation_ttf
+      jetbrains-mono
+      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+      vistafonts
+    ];
 }

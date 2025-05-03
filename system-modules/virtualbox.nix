@@ -1,4 +1,9 @@
-{ pkgs, config, lib2, ... }:
+{
+  pkgs,
+  config,
+  lib2,
+  ...
+}:
 {
   virtualisation.virtualbox.host.enable = lib2.hasWorkload config "desktop";
   virtualisation.virtualbox.host.package = pkgs.unstable.virtualbox;

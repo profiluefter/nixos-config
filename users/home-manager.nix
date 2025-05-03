@@ -5,7 +5,8 @@ in
 {
   home-manager.useGlobalPkgs = true;
 
-  home-manager.users.fabian = { config, pkgs, ... }:
+  home-manager.users.fabian =
+    { pkgs, ... }:
     let
       lib2 = pkgs.callPackage ../lib { };
     in

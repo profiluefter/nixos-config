@@ -1,9 +1,21 @@
-{ pkgs, config, lib2, ... }:
+{
+  pkgs,
+  config,
+  lib2,
+  ...
+}:
 let
   waylandEnabled = false;
   gpuSandboxWorkaround = true;
 
-  waylandFlags = if waylandEnabled then [ "--enable-features=UseOzonePlatform" "--ozone-platform=wayland" ] else [ ];
+  waylandFlags =
+    if waylandEnabled then
+      [
+        "--enable-features=UseOzonePlatform"
+        "--ozone-platform=wayland"
+      ]
+    else
+      [ ];
   gpuSandboxFlags = if gpuSandboxWorkaround then [ "--disable-gpu-sandbox" ] else [ ];
 
   discordArgs = waylandFlags ++ gpuSandboxFlags ++ [ "--start-minimized" ];
@@ -18,7 +30,10 @@ with lib2;
       genericName = "All-in-one cross-platform voice and text chat for gamers";
       exec = "discord ${builtins.concatStringsSep " " discordArgs}";
       terminal = false;
-      categories = [ "Network" "InstantMessaging" ];
+      categories = [
+        "Network"
+        "InstantMessaging"
+      ];
       icon = "discord";
       mimeType = [ "x-scheme-handler/discord" ];
     };
@@ -26,7 +41,8 @@ with lib2;
 
   # TODO: Clean up
   home.file = mkIfWorkload config "desktop" {
-    ".config/autostart/Discord.desktop".source =
-      (config.lib.file.mkOutOfStoreSymlink "/home/fabian/.nix-profile/share/applications/discord.desktop");
+    ".config/autostart/Discord.desktop".source = (
+      config.lib.file.mkOutOfStoreSymlink "/home/fabian/.nix-profile/share/applications/discord.desktop"
+    );
   };
 }

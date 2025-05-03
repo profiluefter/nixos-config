@@ -33,21 +33,20 @@
                     "/persist" = "/persist";
                     "/log" = "/var/log";
                   };
-                  definitions = map
-                    (vol: {
-                      name = "/nix-os" + vol;
-                      value = rec {
-                        mountpoint = builtins.getAttr vol subvolumes;
-                        mountOptions =
-                          if
-                            mountpoint != null
-                          then
-                            [ "compress=zstd" "noatime" ]
-                          else
-                            [ ];
-                      };
-                    })
-                    (builtins.attrNames subvolumes);
+                  definitions = map (vol: {
+                    name = "/nix-os" + vol;
+                    value = rec {
+                      mountpoint = builtins.getAttr vol subvolumes;
+                      mountOptions =
+                        if mountpoint != null then
+                          [
+                            "compress=zstd"
+                            "noatime"
+                          ]
+                        else
+                          [ ];
+                    };
+                  }) (builtins.attrNames subvolumes);
                 in
                 builtins.listToAttrs definitions;
             };

@@ -8,5 +8,5 @@
     pkgs.android-udev-rules
   ];
 
-  users.groups.adbusers = {};
+  users.groups.adbusers = { };
 }

@@ -25,13 +25,21 @@ in
       # TODO: don't share everything with everyone, instead clean this section up and specify individual devices
       folders =
         let
-          all-devices = [ "srv0" "qnap" "fabian-ws" "fabian-ws nix-os" "Pixel 2 XL" "Envy Arch" "Envy NixOS" "acsc-laptop" ];
-          makeFolder = id: name:
-            {
-              inherit id;
-              path = dataDir + "/" + name;
-              devices = all-devices;
-            };
+          all-devices = [
+            "srv0"
+            "qnap"
+            "fabian-ws"
+            "fabian-ws nix-os"
+            "Pixel 2 XL"
+            "Envy Arch"
+            "Envy NixOS"
+            "acsc-laptop"
+          ];
+          makeFolder = id: name: {
+            inherit id;
+            path = dataDir + "/" + name;
+            devices = all-devices;
+          };
         in
         {
           "scans" = makeFolder "mt7nr-50dl7" "scans";
@@ -53,35 +61,56 @@ in
 
       devices = {
         "srv0" = {
-          addresses = [ "tcp://10.0.0.10:22000" "dynamic" ];
+          addresses = [
+            "tcp://10.0.0.10:22000"
+            "dynamic"
+          ];
           id = "UUZVBRP-6HZFIXJ-R63ZECA-KPNNSP6-NEM77RE-YC6RMVM-OTHOK7S-FU6OVQJ";
         };
 
         "qnap" = {
-          addresses = [ "tcp://10.0.0.22:22000" "dynamic" ];
+          addresses = [
+            "tcp://10.0.0.22:22000"
+            "dynamic"
+          ];
           id = "WLHA6GB-DTKV73G-VHL5BY7-TJREZ66-3CFDE5F-SYS5T3R-PYY4QL6-XM3EZAC";
         };
 
         "fabian-ws" = {
-          addresses = [ "tcp://10.0.0.25:22000" "dynamic" ];
+          addresses = [
+            "tcp://10.0.0.25:22000"
+            "dynamic"
+          ];
           id = "5LHDNQQ-D7IIIAV-A7PVO3R-MD5YLEJ-RFHSSZN-22IR3SO-D5DTR74-LOSALQ5";
         };
         "fabian-ws nix-os" = {
-          addresses = [ "tcp://10.0.0.25:22000" "dynamic" ];
+          addresses = [
+            "tcp://10.0.0.25:22000"
+            "dynamic"
+          ];
           id = "XGJU3CG-T2MC2LL-ATMXTNQ-64VBLXP-J63CW7Q-JOT33HW-M7BCCBP-32EZEAD";
         };
 
         "Pixel 2 XL" = {
-          addresses = [ "tcp://10.0.0.50:22000" "dynamic" ];
+          addresses = [
+            "tcp://10.0.0.50:22000"
+            "dynamic"
+          ];
           id = "ZLMR6UX-DLT45PG-E5OI2HG-76DBBBO-PRKU247-3TKECJ2-LBHB735-OG7BLQP";
         };
 
         "Envy Arch" = {
-          addresses = [ "tcp://10.0.0.26:22000" "dynamic" ];
+          addresses = [
+            "tcp://10.0.0.26:22000"
+            "dynamic"
+          ];
           id = "3UZLIEL-4DG7DWP-EM5E5R3-YUNQWN3-NNSRJOK-VCL5AER-KVJK2PL-AJR3EQM";
         };
         "Envy NixOS" = {
-          addresses = [ "tcp://10.0.0.26:22000" "dynamic" ];
+          addresses = [
+            "tcp://10.0.0.26:22000"
+            "dynamic"
+          ];
           id = "YV4BSTD-EFKXRTV-K7FT6UF-RZ5DUA4-ROGPWS4-TYWJWKM-DXPECTY-ZX6JFA4";
         };
 

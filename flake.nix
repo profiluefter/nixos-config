@@ -33,11 +33,24 @@
 
   inputs.treefmt-nix.url = "github:numtide/treefmt-nix";
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, sops-nix, peerix, impermanence, home-manager, nixos-generators, disko, treefmt-nix, ... }@args:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nixpkgs-unstable,
+      sops-nix,
+      peerix,
+      impermanence,
+      home-manager,
+      disko,
+      treefmt-nix,
+      ...
+    }@args:
     let
       treefmtEval = treefmt-nix.lib.evalModule nixpkgs.legacyPackages.x86_64-linux ./treefmt.nix;
 
-      makeNixOSConfiguration = hostname: system: additionalConfig:
+      makeNixOSConfiguration =
+        hostname: system: additionalConfig:
         let
           nixpkgsConfig = {
             inherit system;
@@ -46,7 +59,7 @@
           };
           pkgs = import nixpkgs nixpkgsConfig;
           lib2 = pkgs.callPackage ./lib { };
-          overlay-unstable = final: prev: {
+          overlay-unstable = _final: _prev: {
             unstable = import nixpkgs-unstable nixpkgsConfig;
           };
         in
@@ -75,44 +88,50 @@
             ./configuration.nix
           ] ++ additionalConfig;
         };
-      makeNixOS = hostname: system: additionalConfig:
+      makeNixOS =
+        hostname: system: additionalConfig:
         nixpkgs.lib.nixosSystem (makeNixOSConfiguration hostname system additionalConfig);
     in
     {
-      nixosConfigurations.fabian-ws = makeNixOS "fabian-ws" "x86_64-linux" [ ./devices/fabian-ws/configuration.nix ];
+      nixosConfigurations.fabian-ws = makeNixOS "fabian-ws" "x86_64-linux" [
+        ./devices/fabian-ws/configuration.nix
+      ];
       nixosConfigurations.envy = makeNixOS "envy" "x86_64-linux" [ ./devices/envy/configuration.nix ];
-      nixosConfigurations.nixos-testbench = makeNixOS "nixos-testbench" "x86_64-linux" [ ./devices/nixos-testbench/configuration.nix ];
-# raspberry pi configuration is currently broken
-#      nixosConfigurations.srv0 = makeNixOS "srv0" "aarch64-linux" [ ./devices/srv0/configuration.nix ];
+      nixosConfigurations.nixos-testbench = makeNixOS "nixos-testbench" "x86_64-linux" [
+        ./devices/nixos-testbench/configuration.nix
+      ];
+      # raspberry pi configuration is currently broken
+      #      nixosConfigurations.srv0 = makeNixOS "srv0" "aarch64-linux" [ ./devices/srv0/configuration.nix ];
 
       diskoConfigurations.envy = import ./devices/envy/drives.nix;
 
       apps.x86_64-linux.default = self.apps.x86_64-linux.nixos-testbench;
-      apps.x86_64-linux.nixos-testbench = let
-        startScript = nixpkgs.legacyPackages.x86_64-linux.writeShellScript "run-nixos-testbench" ''
-          export NIX_DISK_IMAGE=$(${nixpkgs.legacyPackages.x86_64-linux.coreutils}/bin/mktemp --suffix -nixos-testbench-disk.img)
-          rm "$NIX_DISK_IMAGE" # will be recreated by script
-          trap 'echo "Deleting disk image $NIX_DISK_IMAGE" && rm "$NIX_DISK_IMAGE"' EXIT
-          echo "Starting NixOS testbench VM with disk image: $NIX_DISK_IMAGE"
-          ${self.nixosConfigurations.nixos-testbench.config.system.build.vm}/bin/run-nixos-testbench-vm
-        '';
-      in
-      {
-        type = "app";
-        program = "${startScript}";
-      };
+      apps.x86_64-linux.nixos-testbench =
+        let
+          startScript = nixpkgs.legacyPackages.x86_64-linux.writeShellScript "run-nixos-testbench" ''
+            export NIX_DISK_IMAGE=$(${nixpkgs.legacyPackages.x86_64-linux.coreutils}/bin/mktemp --suffix -nixos-testbench-disk.img)
+            rm "$NIX_DISK_IMAGE" # will be recreated by script
+            trap 'echo "Deleting disk image $NIX_DISK_IMAGE" && rm "$NIX_DISK_IMAGE"' EXIT
+            echo "Starting NixOS testbench VM with disk image: $NIX_DISK_IMAGE"
+            ${self.nixosConfigurations.nixos-testbench.config.system.build.vm}/bin/run-nixos-testbench-vm
+          '';
+        in
+        {
+          type = "app";
+          program = "${startScript}";
+        };
 
-#      packages.x86_64-linux.srv0-image = nixos-generators.nixosGenerate
-#        (
-#          (makeNixOSConfiguration "srv0" "aarch64-linux" [
-#            ./devices/srv0/configuration.nix
-#            {
-#              boot.loader.raspberryPi.enable = nixpkgs.lib.mkForce false;
-#              sdImage.compressImage = false;
-#            }
-#          ]) //
-#          { format = "sd-aarch64-installer"; }
-#        );
+      #      packages.x86_64-linux.srv0-image = nixos-generators.nixosGenerate
+      #        (
+      #          (makeNixOSConfiguration "srv0" "aarch64-linux" [
+      #            ./devices/srv0/configuration.nix
+      #            {
+      #              boot.loader.raspberryPi.enable = nixpkgs.lib.mkForce false;
+      #              sdImage.compressImage = false;
+      #            }
+      #          ]) //
+      #          { format = "sd-aarch64-installer"; }
+      #        );
 
       checks.x86_64-linux.formatting = treefmtEval.config.build.check self;
       formatter.x86_64-linux = treefmtEval.config.build.wrapper;

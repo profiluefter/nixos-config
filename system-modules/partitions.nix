@@ -17,7 +17,10 @@ in
   options.profi.partitions = {
     enable = mkEnableOption "partition setup";
     btrfsDevice = mkOption { type = types.str; };
-    subvolPrefix = mkOption { type = types.str; default = ""; };
+    subvolPrefix = mkOption {
+      type = types.str;
+      default = "";
+    };
     bootDevice = mkOption { type = types.str; };
   };
 
