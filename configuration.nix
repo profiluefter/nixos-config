@@ -2,7 +2,7 @@
 {
   # FIXME: xournalpp workaround
   environment.systemPackages = [
-    pkgs.gnome.adwaita-icon-theme
+    pkgs.adwaita-icon-theme
     pkgs.shared-mime-info
   ];
   environment.pathsToLink = [
