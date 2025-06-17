@@ -77,6 +77,7 @@ in
       users.fabian = {
         files = [
           ".ssh/known_hosts"
+          ".config/kwinoutputconfig.json"
         ];
 
         directories = [
