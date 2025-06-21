@@ -4,6 +4,8 @@
   inputs.nixpkgs.url = "nixpkgs/nixos-24.11";
   inputs.nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
 
+  inputs.nixos-hardware.url = "github:NixOS/nixos-hardware";
+
   inputs.sops-nix.url = "github:Mic92/sops-nix";
   inputs.sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -97,6 +99,9 @@
         ./devices/fabian-ws/configuration.nix
       ];
       nixosConfigurations.envy = makeNixOS "envy" "x86_64-linux" [ ./devices/envy/configuration.nix ];
+      nixosConfigurations.framework = makeNixOS "framework" "x86_64-linux" [
+        ./devices/framework/configuration.nix
+      ];
       nixosConfigurations.nixos-testbench = makeNixOS "nixos-testbench" "x86_64-linux" [
         ./devices/nixos-testbench/configuration.nix
       ];

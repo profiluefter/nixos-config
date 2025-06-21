@@ -10,3 +10,6 @@
 - Think of a mechanism to automatically provision a newly installed system with required SSH, syncthing, etc. keys
 - Add btrfs swap file
   - Add to disko config
+- Upgrade/migrate disko config
+  - Add run command to setup system (disko + nixos-install) in one go
+- Add way to provision secret decryption keys automatically
