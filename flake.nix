@@ -109,6 +109,7 @@
       #      nixosConfigurations.srv0 = makeNixOS "srv0" "aarch64-linux" [ ./devices/srv0/configuration.nix ];
 
       diskoConfigurations.envy = import ./devices/envy/drives.nix;
+      diskoConfigurations.framework = import ./devices/framework/drives.nix;
 
       apps.x86_64-linux.default = self.apps.x86_64-linux.nixos-testbench;
       apps.x86_64-linux.nixos-testbench =
@@ -138,6 +139,7 @@
       #          { format = "sd-aarch64-installer"; }
       #        );
 
+      # TODO: check/validate disko configuration
       checks.x86_64-linux.formatting = treefmtEval.config.build.check self;
       formatter.x86_64-linux = treefmtEval.config.build.wrapper;
     };

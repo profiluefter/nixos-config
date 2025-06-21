@@ -2,11 +2,10 @@
 {
   imports = [
     ./bootloader.nix
+    ./drives.nix
 
     inputs.nixos-hardware.nixosModules.framework-13th-gen-intel
   ];
-
-  inherit (import ./drives.nix { ssd-disk = "/dev/nvme0n1"; }) disko;
 
   fileSystems."/data".neededForBoot = true;
   fileSystems."/persist".neededForBoot = true;
@@ -15,6 +14,11 @@
   profi.systemPurity = {
     enable = true;
     rollback = false;
+  };
+
+  disko = {
+    enableConfig = true;
+    checkScripts = true;
   };
 
   # TODO: deprecate/remove or merge this with disko configuration
