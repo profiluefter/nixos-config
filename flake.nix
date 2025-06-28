@@ -111,10 +111,9 @@
       diskoConfigurations.envy = import ./devices/envy/drives.nix;
       diskoConfigurations.framework = import ./devices/framework/drives.nix;
 
-      apps.x86_64-linux.default = self.apps.x86_64-linux.nixos-testbench;
-      apps.x86_64-linux.nixos-testbench =
+      apps.x86_64-linux.nixos-testbench-vm =
         let
-          startScript = nixpkgs.legacyPackages.x86_64-linux.writeShellScript "run-nixos-testbench" ''
+          startScript = nixpkgs.legacyPackages.x86_64-linux.writeShellScript "run-nixos-testbench-vm" ''
             export NIX_DISK_IMAGE=$(${nixpkgs.legacyPackages.x86_64-linux.coreutils}/bin/mktemp --suffix -nixos-testbench-disk.img)
             rm "$NIX_DISK_IMAGE" # will be recreated by script
             trap 'echo "Deleting disk image $NIX_DISK_IMAGE" && rm "$NIX_DISK_IMAGE"' EXIT
@@ -125,6 +124,29 @@
         {
           type = "app";
           program = "${startScript}";
+        };
+
+      apps.x86_64-linux.framework-install =
+        let
+          installScript = nixpkgs.legacyPackages.x86_64-linux.writeShellScript "do-framework-install" ''
+            set -eux
+            if [ ! -b ${self.nixosConfigurations.framework.config.disko.devices.disk.ssd.device} ]; then
+                echo "Target SSD not found at ${self.nixosConfigurations.framework.config.disko.devices.disk.ssd.device}! Aborting installation."
+                exit 1
+            fi
+            read -p "This will install the framework configuration to the internal NVMe SSD. Continue? (y/N) " -r answer
+            if [[ ! $answer =~ ^[Yy]$ ]]; then
+                echo "Installation aborted."
+                exit 1
+            fi
+
+            # TODO: Secrets provisioning, see https://github.com/nix-community/disko/blob/83c4da299c1d7d300f8c6fd3a72ac46cb0d59aae/tests/disko-install/default.nix#L60
+            ${disko.packages.x86_64-linux.disko-install}/bin/disko-install --flake ${self}#framework --write-efi-boot-entries
+          '';
+        in
+        {
+          type = "app";
+          program = "${installScript}";
         };
 
       #      packages.x86_64-linux.srv0-image = nixos-generators.nixosGenerate
