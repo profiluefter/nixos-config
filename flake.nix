@@ -1,7 +1,7 @@
 {
   description = "My system configuration";
 
-  inputs.nixpkgs.url = "nixpkgs/nixos-24.11";
+  inputs.nixpkgs.url = "nixpkgs/nixos-25.05";
   inputs.nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
 
   inputs.nixos-hardware.url = "github:NixOS/nixos-hardware";
@@ -13,7 +13,7 @@
 
   inputs.impermanence.url = "github:nix-community/impermanence";
 
-  inputs.home-manager.url = "github:nix-community/home-manager/release-24.11";
+  inputs.home-manager.url = "github:nix-community/home-manager/release-25.05";
   inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
   inputs.plasma-manager.url = "github:pjones/plasma-manager";
