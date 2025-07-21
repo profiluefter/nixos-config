@@ -10,7 +10,7 @@
     lib2.mkIfWorkload config "desktop" [
       firefox-wayland
       libreoffice
-      kate
+      kdePackages.kate
       vlc
     ];
 

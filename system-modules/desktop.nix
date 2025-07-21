@@ -32,7 +32,7 @@ in
       noto-fonts-emoji
       liberation_ttf
       jetbrains-mono
-      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+      nerd-fonts.jetbrains-mono
       vistafonts
     ];
 }

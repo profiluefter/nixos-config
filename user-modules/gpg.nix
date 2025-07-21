@@ -29,7 +29,7 @@
   services.gpg-agent = {
     enable = true;
     enableSshSupport = true;
-    pinentryPackage =
+    pinentry.package =
       if lib2.hasWorkload config "desktop" then pkgs.pinentry-qt else pkgs.pinentry-curses;
     sshKeys = [ "F14AB18A69F3A862C4AB47DAF3C49AFC6A443015" ];
   };
@@ -37,5 +37,5 @@
   # TODO: make this work outside of a terminal session
   programs.bash.initExtra = "export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)";
 
-  home.packages = lib2.mkIfWorkload config "desktop" [ pkgs.kleopatra ];
+  home.packages = lib2.mkIfWorkload config "desktop" [ pkgs.kdePackages.kleopatra ];
 }

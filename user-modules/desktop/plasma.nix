@@ -8,10 +8,11 @@
   home.packages =
     with pkgs;
     lib2.mkIfWorkload config "desktop" [
-      ark
+      kdePackages.ark
 
-      libsForQt5.applet-window-appmenu
-      libsForQt5.applet-window-buttons
+      # TODO: update for plasma 6
+      # libsForQt5.applet-window-appmenu
+      kdePackages.applet-window-buttons6
     ];
 
   # https://github.com/pjones/plasma-manager/blob/trunk/example/home.nix

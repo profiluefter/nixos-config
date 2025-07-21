@@ -17,7 +17,7 @@ in
 
       imports = [
         inputs.plasma-manager.homeManagerModules.plasma-manager
-        inputs.nix-index-database.hmModules.nix-index
+        inputs.nix-index-database.homeModules.nix-index
 
         ../user-modules
 

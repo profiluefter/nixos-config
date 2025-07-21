@@ -1,10 +1,9 @@
 { ... }:
 {
-  # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
   hardware.bluetooth.enable = true;
   security.rtkit.enable = true;
 
+  # Enable sound with pipewire.
   services.pipewire = {
     enable = true;
     alsa.enable = true;

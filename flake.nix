@@ -81,7 +81,7 @@
             sops-nix.nixosModules.sops
             peerix.nixosModules.peerix
             impermanence.nixosModule
-            home-manager.nixosModule
+            home-manager.nixosModules.home-manager
             disko.nixosModules.disko
 
             { networking.hostName = hostname; }
