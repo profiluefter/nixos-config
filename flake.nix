@@ -88,7 +88,8 @@
 
             # General configuration
             ./configuration.nix
-          ] ++ additionalConfig;
+          ]
+          ++ additionalConfig;
         };
       makeNixOS =
         hostname: system: additionalConfig:

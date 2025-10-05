@@ -76,7 +76,8 @@
             name = keyPrefix + key;
             value = {
               inherit key;
-            } // sopsAttrs;
+            }
+            // sopsAttrs;
           }) keys;
         in
         if enable then keyEntries else [ ]
