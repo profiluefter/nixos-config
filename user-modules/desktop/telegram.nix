@@ -1,15 +1,10 @@
+{ pkgs, ... }:
 {
-  pkgs,
-  lib2,
-  config,
-  ...
-}:
-{
-  home.packages = lib2.mkIfWorkload config "desktop" [
+  home.packages = [
     pkgs.tdesktop
   ];
 
-  home.file.".config/autostart/org.telegram.desktop.desktop" = lib2.mkIfWorkload config "desktop" {
+  home.file.".config/autostart/org.telegram.desktop.desktop" = {
     text = ''
       [Desktop Entry]
       Name=Telegram Desktop

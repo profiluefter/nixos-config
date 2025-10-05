@@ -8,17 +8,11 @@
     ./soundcard.nix
     ./g910.nix
     #./screens.nix
-  ];
 
-  profi.workloads = [
-    "android"
-    "desktop"
-    "school"
-    "coding"
-    "latex"
-    "gaming"
-    "cross-compile"
-    "docker"
-    "ctf"
+    ../../system-modules/desktop.nix
+    ../../system-modules/cross-compilation.nix
+    ../../system-modules/steam.nix
+    ../../system-modules/virtualbox.nix
+    ../../services/docker.nix
   ];
 }

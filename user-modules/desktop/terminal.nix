@@ -1,11 +1,6 @@
+{ pkgs, ... }:
 {
-  pkgs,
-  lib2,
-  config,
-  ...
-}:
-{
-  home.packages = lib2.mkIfWorkload config "desktop" [
+  home.packages = [
     pkgs.kdePackages.yakuake
     (pkgs.makeAutostartItem {
       name = "yakuake";
@@ -14,16 +9,16 @@
     })
   ];
 
-  programs.plasma.configFile."yakuakerc" = lib2.mkIfWorkload config "desktop" {
+  programs.plasma.configFile."yakuakerc" = {
     "Dialogs"."FirstRun" = false;
     "Window"."KeepOpen" = false;
   };
 
-  programs.plasma.configFile."konsolerc" = lib2.mkIfWorkload config "desktop" {
+  programs.plasma.configFile."konsolerc" = {
     "Desktop Entry"."DefaultProfile" = "NixOS Profile.profile";
   };
 
-  home.file.".local/share/konsole/NixOS Profile.profile" = lib2.mkIfWorkload config "desktop" {
+  home.file.".local/share/konsole/NixOS Profile.profile" = {
     text = ''
       [General]
       Name=NixOS Profile

@@ -1,6 +1,6 @@
-{ lib2, config, ... }:
+{ ... }:
 {
-  programs.steam = lib2.mkIfWorkload config "gaming" {
+  programs.steam = {
     enable = true;
     remotePlay.openFirewall = true;
   };

@@ -1,12 +1,7 @@
+{ pkgs, ... }:
 {
-  pkgs,
-  config,
-  lib2,
-  ...
-}:
-{
-  virtualisation.virtualbox.host.enable = lib2.hasWorkload config "desktop";
+  virtualisation.virtualbox.host.enable = true;
   virtualisation.virtualbox.host.package = pkgs.unstable.virtualbox;
-  users.extraGroups.vboxusers.members = lib2.mkIfWorkload config "desktop" [ "fabian" ];
-  environment.systemPackages = lib2.mkIfWorkload config "desktop" [ pkgs.vagrant ];
+  users.extraGroups.vboxusers.members = [ "fabian" ];
+  environment.systemPackages = [ pkgs.vagrant ];
 }

@@ -1,19 +1,11 @@
-{
-  pkgs,
-  lib2,
-  config,
-  ...
-}:
-let
-  enabled = lib2.hasWorkload config "desktop";
-in
+{ pkgs, ... }:
 {
   # Enable the X11 windowing system.
-  services.xserver.enable = enabled;
+  services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = enabled;
-  services.desktopManager.plasma6.enable = enabled;
+  services.displayManager.sddm.enable = true;
+  services.desktopManager.plasma6.enable = true;
 
   # use wayland per default
   services.displayManager.defaultSession = "plasma";
@@ -24,15 +16,13 @@ in
     variant = "nodeadkeys";
   };
 
-  fonts.packages =
-    with pkgs;
-    lib2.mkIfWorkload config "desktop" [
-      corefonts
-      noto-fonts
-      noto-fonts-emoji
-      liberation_ttf
-      jetbrains-mono
-      nerd-fonts.jetbrains-mono
-      vistafonts
-    ];
+  fonts.packages = with pkgs; [
+    corefonts
+    noto-fonts
+    noto-fonts-emoji
+    liberation_ttf
+    jetbrains-mono
+    nerd-fonts.jetbrains-mono
+    vistafonts
+  ];
 }

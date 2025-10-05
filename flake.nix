@@ -59,8 +59,6 @@
             config.allowUnfree = true;
             config.android_sdk.accept_license = true;
           };
-          pkgs = import nixpkgs nixpkgsConfig;
-          lib2 = pkgs.callPackage ./lib { };
           overlay-unstable = _final: _prev: {
             unstable = import nixpkgs-unstable nixpkgsConfig;
           };
@@ -69,7 +67,7 @@
           inherit system;
 
           specialArgs = {
-            inherit system lib2;
+            inherit system;
             inputs = args;
           };
 
@@ -151,5 +149,27 @@
       # TODO: check/validate disko configuration
       checks.x86_64-linux.formatting = treefmtEval.config.build.check self;
       formatter.x86_64-linux = treefmtEval.config.build.wrapper;
+
+      # Expose home-manager modules for potential reuse
+      homeManagerModules = {
+        default = ./user-modules;
+        android = ./user-modules/android.nix;
+        coding-tools = ./user-modules/coding-tools.nix;
+        ctf = ./user-modules/ctf;
+        desktop = ./user-modules/desktop;
+        gpg = ./user-modules/gpg.nix;
+        hardware = ./user-modules/hardware;
+        latex = ./user-modules/latex.nix;
+        school = ./user-modules/school.nix;
+      };
+
+      # Expose NixOS system modules for potential reuse
+      nixosModules = {
+        desktop = ./system-modules/desktop.nix;
+        cross-compilation = ./system-modules/cross-compilation.nix;
+        steam = ./system-modules/steam.nix;
+        virtualbox = ./system-modules/virtualbox.nix;
+        docker = ./services/docker.nix;
+      };
     };
 }

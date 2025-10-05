@@ -1,6 +1,6 @@
-{ config, lib2, ... }:
+{ ... }:
 {
-  services.kdeconnect = lib2.mkIfWorkload config "desktop" {
+  services.kdeconnect = {
     enable = true;
     indicator = true;
   };
