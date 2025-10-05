@@ -1,5 +1,25 @@
 { pkgs, ... }:
 {
+  programs.git = {
+    enable = true;
+    userName = "Fabian Gurtner";
+    userEmail = "fabian.paul.gurtner@gmail.com";
+
+    signing = {
+      key = "61D3E3F22AA966EF";
+      signByDefault = true;
+    };
+
+    delta.enable = true;
+  };
+
+  programs.ssh = {
+    enable = true;
+  };
+
+  # TODO: make this work outside of a terminal session
+  programs.bash.initExtra = "export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)";
+
   programs.bat.enable = true;
   programs.jq.enable = true;
   programs.micro.enable = true;

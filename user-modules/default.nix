@@ -1,5 +1,10 @@
 { ... }:
 {
-  # This module no longer defines the profi.workloads option
-  # Individual modules should be imported directly in device configurations
+  imports = [
+    ./vim
+    ./nix-index.nix
+    ./nixpkgs.nix
+    ./scripts.nix
+    ./shell.nix
+  ];
 }

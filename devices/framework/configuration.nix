@@ -6,7 +6,6 @@
 
     inputs.nixos-hardware.nixosModules.framework-13th-gen-intel
 
-    # System modules
     ../../system-modules/desktop.nix
     ../../system-modules/cross-compilation.nix
     ../../system-modules/steam.nix

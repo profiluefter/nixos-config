@@ -153,13 +153,12 @@
 
       # Expose home-manager modules for potential reuse
       homeManagerModules = {
-        common = ./user-modules/common.nix;
+        default = ./user-modules;
         android = ./user-modules/android.nix;
         coding-tools = ./user-modules/coding-tools.nix;
         ctf = ./user-modules/ctf;
         desktop = ./user-modules/desktop;
         gpg = ./user-modules/gpg.nix;
-        gpg-minimal = ./user-modules/gpg-minimal.nix;
         hardware = ./user-modules/hardware;
         latex = ./user-modules/latex.nix;
         school = ./user-modules/school.nix;

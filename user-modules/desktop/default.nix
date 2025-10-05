@@ -2,6 +2,7 @@
 {
   imports = [
     ./discord.nix
+    ./gpg.nix
     ./jetbrains.nix
     ./kdeconnect.nix
     ./keepassxc.nix

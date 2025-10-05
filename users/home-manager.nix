@@ -9,7 +9,7 @@
         inputs.plasma-manager.homeModules.plasma-manager
         inputs.nix-index-database.homeModules.nix-index
 
-        ../user-modules/common.nix
+        ../user-modules
 
         # Import device-specific home configuration
         (../devices/${config.networking.hostName}/home.nix)
