@@ -61,20 +61,8 @@
           };
           pkgs = import nixpkgs nixpkgsConfig;
           lib2 = pkgs.callPackage ./lib { };
-          nixpkgs-unstable-patched = pkgs.applyPatches {
-            name = "nixpkgs-unstable-patched";
-            src = nixpkgs-unstable;
-            patches = [
-              # jetbrains-jdk-jcef is unable to build with current nixpkgs-unstable
-              (pkgs.fetchpatch {
-                name = "jetbrains.jdk-fix";
-                url = "https://patch-diff.githubusercontent.com/raw/NixOS/nixpkgs/pull/426285.patch";
-                sha256 = "sha256-GJiY+D91ZJ+WMxffH4aekWGEM5rJZD60vK18TNTu0vM=";
-              })
-            ];
-          };
           overlay-unstable = _final: _prev: {
-            unstable = import nixpkgs-unstable-patched nixpkgsConfig;
+            unstable = import nixpkgs-unstable nixpkgsConfig;
           };
         in
         {
