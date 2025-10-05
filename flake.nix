@@ -59,7 +59,6 @@
             config.allowUnfree = true;
             config.android_sdk.accept_license = true;
           };
-          pkgs = import nixpkgs nixpkgsConfig;
           overlay-unstable = _final: _prev: {
             unstable = import nixpkgs-unstable nixpkgsConfig;
           };
