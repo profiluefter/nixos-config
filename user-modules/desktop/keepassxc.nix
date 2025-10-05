@@ -1,9 +1,4 @@
-{
-  pkgs,
-  config,
-  lib2,
-  ...
-}:
+{ pkgs, config, ... }:
 let
   keepassxc-autostart = pkgs.makeAutostartItem {
     name = "KeePassXC";
@@ -12,13 +7,13 @@ let
   };
 in
 {
-  home.packages = lib2.mkIfWorkload config "desktop" [
+  home.packages = [
     keepassxc-autostart
     pkgs.keepassxc
   ];
 
   # TODO: move device specific configuration
-  home.file = lib2.mkIfWorkload config "desktop" {
+  home.file = {
     passwords.source = config.lib.file.mkOutOfStoreSymlink "/data/sync/passwords";
   };
 }

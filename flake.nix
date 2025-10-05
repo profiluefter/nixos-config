@@ -60,7 +60,6 @@
             config.android_sdk.accept_license = true;
           };
           pkgs = import nixpkgs nixpkgsConfig;
-          lib2 = pkgs.callPackage ./lib { };
           overlay-unstable = _final: _prev: {
             unstable = import nixpkgs-unstable nixpkgsConfig;
           };
@@ -69,7 +68,7 @@
           inherit system;
 
           specialArgs = {
-            inherit system lib2;
+            inherit system;
             inputs = args;
           };
 

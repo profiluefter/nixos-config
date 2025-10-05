@@ -1,22 +1,15 @@
+{ pkgs, ... }:
 {
-  pkgs,
-  config,
-  lib2,
-  ...
-}:
-{
-  home.packages =
-    with pkgs;
-    lib2.mkIfWorkload config "desktop" [
-      kdePackages.ark
+  home.packages = with pkgs; [
+    kdePackages.ark
 
-      # TODO: update for plasma 6
-      # libsForQt5.applet-window-appmenu
-      kdePackages.applet-window-buttons6
-    ];
+    # TODO: update for plasma 6
+    # libsForQt5.applet-window-appmenu
+    kdePackages.applet-window-buttons6
+  ];
 
   # https://github.com/pjones/plasma-manager/blob/trunk/example/home.nix
-  programs.plasma = lib2.mkIfWorkload config "desktop" {
+  programs.plasma = {
     enable = true;
 
     workspace = {

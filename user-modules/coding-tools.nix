@@ -1,18 +1,11 @@
+{ pkgs, ... }:
 {
-  pkgs,
-  lib2,
-  config,
-  ...
-}:
-{
-  programs.java.enable = lib2.hasWorkload config "coding";
+  programs.java.enable = true;
 
-  home.packages =
-    with pkgs;
-    lib2.mkIfWorkload config "coding" [
-      nodejs
-      yarn
-      rustup
-      gcc
-    ];
+  home.packages = with pkgs; [
+    nodejs
+    yarn
+    rustup
+    gcc
+  ];
 }

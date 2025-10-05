@@ -4,18 +4,12 @@
     ./bootloader.nix
     ./hardware-configuration.nix
     ./nvidia.nix
-  ];
 
-  profi.workloads = [
-    "android"
-    "coding"
-    "cross-compile"
-    "ctf"
-    "desktop"
-    "docker"
-    "gaming"
-    "hardware-envy"
-    "latex"
-    "school"
+    # System modules
+    ../../system-modules/desktop.nix
+    ../../system-modules/cross-compilation.nix
+    ../../system-modules/steam.nix
+    ../../system-modules/virtualbox.nix
+    ../../services/docker.nix
   ];
 }

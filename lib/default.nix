@@ -1,34 +1,5 @@
-{ lib, ... }:
-with lib;
-let
-  workloads = [
-    "school"
-    "android"
-    "desktop"
-    "coding"
-    "latex"
-    "gaming"
-    "cross-compile"
-    "docker"
-    "ctf"
-
-    "hardware-envy"
-  ];
-in
-rec {
-  inherit workloads;
-
-  workloadType = with types; listOf (enum workloads);
-
-  mkIfWorkload =
-    config: workload: content:
-    mkIf (hasWorkload config workload) content;
-
-  hasWorkload =
-    config: workload:
-    if builtins.isList workload then
-      builtins.all (x: hasWorkload config x) workload
-    else
-      assert builtins.elem workload workloads;
-      builtins.elem workload config.profi.workloads;
+{ ... }:
+{
+  # This library is no longer needed as workloads have been removed
+  # Keeping empty file for now to avoid breaking flake.nix import
 }

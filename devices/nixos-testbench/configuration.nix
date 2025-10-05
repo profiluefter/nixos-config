@@ -6,9 +6,6 @@
     ./network.nix
   ];
 
-  profi.workloads = [
-  ];
-
   users.users.test = {
     isNormalUser = true;
     description = "Test user for nixos-testbench";
