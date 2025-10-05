@@ -141,3 +141,35 @@ Example (nixos-testbench):
 - `user-modules/gpg-minimal.nix` - Server-friendly GPG config
 - `user-modules/hardware/touchpad-envy.nix` - Device-specific touchpad config
 - `devices/*/home.nix` - Per-device home-manager configurations (4 files)
+
+## Exposed Flake Outputs
+
+The flake now exposes modules for potential reuse in other configurations:
+
+### Home Manager Modules (`homeManagerModules`)
+- `common` - Common baseline (shell, vim, scripts)
+- `android` - Android development tools
+- `coding-tools` - Programming language toolchains
+- `ctf` - CTF/security tools
+- `desktop` - Desktop environment and applications
+- `gpg` / `gpg-minimal` - GPG configuration (desktop/server variants)
+- `hardware` - Hardware-specific configurations
+- `latex` - LaTeX tools
+- `school` - School-related applications
+
+### NixOS Modules (`nixosModules`)
+- `desktop` - KDE Plasma desktop environment
+- `cross-compilation` - Cross-compilation support
+- `steam` - Gaming with Steam
+- `virtualbox` - VirtualBox virtualization
+- `docker` - Docker containerization
+
+Usage example:
+```nix
+{
+  inputs.nixos-config.url = "github:profiluefter/nixos-config";
+  
+  # In your configuration
+  imports = [ inputs.nixos-config.homeManagerModules.common ];
+}
+```

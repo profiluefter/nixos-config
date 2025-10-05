@@ -150,5 +150,28 @@
       # TODO: check/validate disko configuration
       checks.x86_64-linux.formatting = treefmtEval.config.build.check self;
       formatter.x86_64-linux = treefmtEval.config.build.wrapper;
+
+      # Expose home-manager modules for potential reuse
+      homeManagerModules = {
+        common = ./user-modules/common.nix;
+        android = ./user-modules/android.nix;
+        coding-tools = ./user-modules/coding-tools.nix;
+        ctf = ./user-modules/ctf;
+        desktop = ./user-modules/desktop;
+        gpg = ./user-modules/gpg.nix;
+        gpg-minimal = ./user-modules/gpg-minimal.nix;
+        hardware = ./user-modules/hardware;
+        latex = ./user-modules/latex.nix;
+        school = ./user-modules/school.nix;
+      };
+
+      # Expose NixOS system modules for potential reuse
+      nixosModules = {
+        desktop = ./system-modules/desktop.nix;
+        cross-compilation = ./system-modules/cross-compilation.nix;
+        steam = ./system-modules/steam.nix;
+        virtualbox = ./system-modules/virtualbox.nix;
+        docker = ./services/docker.nix;
+      };
     };
 }
