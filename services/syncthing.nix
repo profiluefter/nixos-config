@@ -26,7 +26,6 @@ in
       folders =
         let
           all-devices = [
-            "srv0"
             "qnap"
             "fabian-ws"
             "fabian-ws nix-os"
@@ -60,14 +59,6 @@ in
         };
 
       devices = {
-        "srv0" = {
-          addresses = [
-            "tcp://10.0.0.10:22000"
-            "dynamic"
-          ];
-          id = "UUZVBRP-6HZFIXJ-R63ZECA-KPNNSP6-NEM77RE-YC6RMVM-OTHOK7S-FU6OVQJ";
-        };
-
         "qnap" = {
           addresses = [
             "tcp://10.0.0.22:22000"

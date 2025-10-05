@@ -106,8 +106,6 @@
       nixosConfigurations.nixos-testbench = makeNixOS "nixos-testbench" "x86_64-linux" [
         ./devices/nixos-testbench/configuration.nix
       ];
-      # raspberry pi configuration is currently broken
-      #      nixosConfigurations.srv0 = makeNixOS "srv0" "aarch64-linux" [ ./devices/srv0/configuration.nix ];
 
       diskoConfigurations.envy = import ./devices/envy/drives.nix;
       diskoConfigurations.framework = import ./devices/framework/drives.nix;
@@ -149,18 +147,6 @@
           type = "app";
           program = "${installScript}";
         };
-
-      #      packages.x86_64-linux.srv0-image = nixos-generators.nixosGenerate
-      #        (
-      #          (makeNixOSConfiguration "srv0" "aarch64-linux" [
-      #            ./devices/srv0/configuration.nix
-      #            {
-      #              boot.loader.raspberryPi.enable = nixpkgs.lib.mkForce false;
-      #              sdImage.compressImage = false;
-      #            }
-      #          ]) //
-      #          { format = "sd-aarch64-installer"; }
-      #        );
 
       # TODO: check/validate disko configuration
       checks.x86_64-linux.formatting = treefmtEval.config.build.check self;
