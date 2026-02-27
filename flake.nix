@@ -1,39 +1,44 @@
 {
   description = "My system configuration";
 
-  inputs.nixpkgs.url = "nixpkgs/nixos-25.05";
-  inputs.nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
+  inputs = {
+    nixpkgs.url = "nixpkgs/nixos-25.05";
+    nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
 
-  inputs.nixos-hardware.url = "github:NixOS/nixos-hardware";
+    nixos-hardware.url = "github:NixOS/nixos-hardware";
 
-  inputs.sops-nix.url = "github:Mic92/sops-nix";
-  inputs.sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+    sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
-  inputs.peerix.url = "github:cid-chan/peerix";
+    peerix.url = "github:cid-chan/peerix";
 
-  inputs.impermanence.url = "github:nix-community/impermanence";
+    impermanence.url = "github:nix-community/impermanence";
 
-  inputs.home-manager.url = "github:nix-community/home-manager/release-25.05";
-  inputs.home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager.url = "github:nix-community/home-manager/release-25.05";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-  inputs.plasma-manager.url = "github:pjones/plasma-manager";
-  inputs.plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
-  inputs.plasma-manager.inputs.home-manager.follows = "home-manager";
+    plasma-manager.url = "github:pjones/plasma-manager";
+    plasma-manager.inputs.nixpkgs.follows = "nixpkgs";
+    plasma-manager.inputs.home-manager.follows = "home-manager";
 
-  inputs.nix-index-database.url = "github:Mic92/nix-index-database";
-  inputs.nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+    nix-index-database.url = "github:Mic92/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
-  inputs.nix-alien.url = "github:thiagokokada/nix-alien";
-  inputs.nix-alien.inputs.nixpkgs.follows = "nixpkgs";
-  inputs.nix-alien.inputs.nix-index-database.follows = "nix-index-database";
+    nix-alien.url = "github:thiagokokada/nix-alien";
+    nix-alien.inputs.nixpkgs.follows = "nixpkgs";
+    nix-alien.inputs.nix-index-database.follows = "nix-index-database";
 
-  inputs.nixos-generators.url = "github:nix-community/nixos-generators";
-  inputs.nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
+    nixos-generators.url = "github:nix-community/nixos-generators";
+    nixos-generators.inputs.nixpkgs.follows = "nixpkgs";
 
-  inputs.disko.url = "github:nix-community/disko";
-  inputs.disko.inputs.nixpkgs.follows = "nixpkgs";
+    disko.url = "github:nix-community/disko";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
 
-  inputs.treefmt-nix.url = "github:numtide/treefmt-nix";
+    treefmt-nix.url = "github:numtide/treefmt-nix";
+
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    import-tree.url = "github:vic/import-tree";
+  };
 
   outputs =
     {
