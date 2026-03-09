@@ -1,13 +1,7 @@
 { inputs, self, ... }:
 {
-  systems = [
-    "x86_64-linux"
-    "aarch64-linux"
-  ];
-
   perSystem =
     {
-      config,
       pkgs,
       system,
       ...
@@ -87,7 +81,7 @@
             { nixpkgs.overlays = [ overlay-unstable ]; }
             { system.configurationRevision = self.rev or "dirty"; }
 
-            inputs.sops-nix.nixosModules.sops
+            self.modules.nixos.default
             inputs.peerix.nixosModules.peerix
             inputs.impermanence.nixosModule
             inputs.home-manager.nixosModules.home-manager

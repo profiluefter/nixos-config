@@ -27,8 +27,6 @@
 
     ./users/profiles.nix
     ./users/home-manager.nix
-
-    ./sops.nix
   ];
 
   # This value determines the NixOS release from which the default

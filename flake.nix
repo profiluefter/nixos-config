@@ -40,10 +40,17 @@
     import-tree.url = "github:vic/import-tree";
   };
 
-  outputs = inputs: inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-    imports = [
-      ./legacy.nix
-      (inputs.import-tree ./modules)
-    ];
-  };
+  outputs =
+    inputs:
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+      ];
+
+      imports = [
+        ./legacy.nix
+        (inputs.import-tree ./modules)
+      ];
+    };
 }
