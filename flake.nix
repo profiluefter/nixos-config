@@ -49,7 +49,6 @@
       ];
 
       imports = [
-        ./legacy.nix
         (inputs.import-tree ./modules)
       ];
     };

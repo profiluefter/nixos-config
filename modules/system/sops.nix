@@ -22,7 +22,7 @@
         let
           files = [
             {
-              sopsFile = ../secrets/vpn.profiluefter.me.yaml;
+              sopsFile = ../../secrets/vpn.profiluefter.me.yaml;
               keyPrefix = "vpn-";
               keys = [
                 "tls-crypt-v2"
@@ -32,7 +32,7 @@
               ];
             }
             {
-              sopsFile = ../secrets/users.yaml;
+              sopsFile = ../../secrets/users.yaml;
               keys = [
                 "rootHash"
                 "userHash"
@@ -40,7 +40,7 @@
               neededForUsers = true;
             }
             {
-              sopsFile = ../secrets/school.yaml;
+              sopsFile = ../../secrets/school.yaml;
               keys = [
                 "username"
                 "password"
@@ -50,13 +50,13 @@
             }
             {
               enable = config.services.peerix.enable;
-              sopsFile = ../secrets/peerix.yaml;
+              sopsFile = ../../secrets/peerix.yaml;
               keys = [ "private" ];
               keyPrefix = "peerix-";
               owner = "peerix";
             }
             {
-              sopsFile = ../secrets/gitlab.yaml;
+              sopsFile = ../../secrets/gitlab.yaml;
               keys = [
                 "username"
                 "personal-access-token"
