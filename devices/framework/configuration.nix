@@ -6,7 +6,6 @@
 
     inputs.nixos-hardware.nixosModules.framework-13th-gen-intel
 
-    ../../system-modules/steam.nix
     ../../system-modules/virtualbox.nix
     ../../services/docker.nix
   ];

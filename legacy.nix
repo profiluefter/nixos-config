@@ -81,8 +81,10 @@
             { nixpkgs.overlays = [ overlay-unstable ]; }
             { system.configurationRevision = self.rev or "dirty"; }
 
+            self.modules.nixos.default
             self.modules.nixos.secrets
             self.modules.nixos.workstation
+            self.modules.nixos.gaming
             self.modules.nixos.plasma # TODO: move to individual device configs
             inputs.peerix.nixosModules.peerix
             inputs.impermanence.nixosModule
@@ -131,7 +133,6 @@
 
       # Expose NixOS system modules for potential reuse
       nixosModules = {
-        steam = ./system-modules/steam.nix;
         virtualbox = ./system-modules/virtualbox.nix;
         docker = ./services/docker.nix;
       };
