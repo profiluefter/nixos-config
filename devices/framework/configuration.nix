@@ -6,7 +6,6 @@
 
     inputs.nixos-hardware.nixosModules.framework-13th-gen-intel
 
-    ../../system-modules/desktop.nix
     ../../system-modules/cross-compilation.nix
     ../../system-modules/steam.nix
     ../../system-modules/virtualbox.nix

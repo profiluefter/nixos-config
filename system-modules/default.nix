@@ -1,8 +1,6 @@
 { ... }:
 {
   imports = [
-    ./cifs.nix
-    ./compatibility.nix
     ./nix.nix
     ./partitions.nix
     ./systemd.nix

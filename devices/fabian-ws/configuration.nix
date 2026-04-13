@@ -9,7 +9,6 @@
     ./g910.nix
     #./screens.nix
 
-    ../../system-modules/desktop.nix
     ../../system-modules/cross-compilation.nix
     ../../system-modules/steam.nix
     ../../system-modules/virtualbox.nix
