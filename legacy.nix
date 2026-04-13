@@ -81,7 +81,7 @@
             { nixpkgs.overlays = [ overlay-unstable ]; }
             { system.configurationRevision = self.rev or "dirty"; }
 
-            self.modules.nixos.default
+            self.modules.nixos.secrets
             inputs.peerix.nixosModules.peerix
             inputs.impermanence.nixosModule
             inputs.home-manager.nixosModules.home-manager

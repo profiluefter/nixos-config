@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.modules.nixos.default =
+  flake.modules.nixos.secrets =
     {
       config,
       pkgs,
