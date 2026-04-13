@@ -9,7 +9,6 @@
     ./g910.nix
     #./screens.nix
 
-    ../../system-modules/virtualbox.nix
     ../../services/docker.nix
   ];
 }

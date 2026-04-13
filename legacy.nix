@@ -84,8 +84,12 @@
             self.modules.nixos.default
             self.modules.nixos.secrets
             self.modules.nixos.workstation
+
+            # TODO: move to individual device configs
             self.modules.nixos.gaming
-            self.modules.nixos.plasma # TODO: move to individual device configs
+            self.modules.nixos.virtualbox
+            self.modules.nixos.plasma
+
             inputs.peerix.nixosModules.peerix
             inputs.impermanence.nixosModule
             inputs.home-manager.nixosModules.home-manager
