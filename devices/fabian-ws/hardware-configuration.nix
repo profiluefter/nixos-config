@@ -23,12 +23,6 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  profi.partitions = {
-    enable = true;
-    btrfsDevice = "/dev/disk/by-uuid/72afc3e6-956b-4ba7-94eb-e7d645f5bf08";
-    bootDevice = "/dev/disk/by-uuid/4499-08AD";
-  };
-
   swapDevices = [ { device = "/dev/disk/by-uuid/386aa628-a7a0-43ce-82da-7916838c1ec1"; } ];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";

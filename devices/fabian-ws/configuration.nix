@@ -3,6 +3,7 @@
   imports = [
     ./bootloader.nix
     ./hardware-configuration.nix
+    ./partitions.nix
 
     ./amdgpu.nix
     ./soundcard.nix

@@ -17,12 +17,4 @@
     enableConfig = true;
     checkScripts = true;
   };
-
-  # TODO: deprecate/remove or merge this with disko configuration
-  profi.partitions = {
-    enable = false;
-    btrfsDevice = "/dev/disk/by-partlabel/disk-ssd-btrfs";
-    subvolPrefix = "nix-os/";
-    bootDevice = "/dev/disk/by-partlabel/disk-ssd-esp";
-  };
 }

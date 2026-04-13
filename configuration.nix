@@ -15,8 +15,6 @@
     ./system-packages.nix
     ./locales.nix
 
-    ./system-modules
-
     ./services/docker.nix
     ./services/firewall.nix
     ./services/networking.nix
