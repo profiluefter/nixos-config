@@ -82,7 +82,7 @@
             { system.configurationRevision = self.rev or "dirty"; }
 
             self.modules.nixos.secrets
-            self.modules.nixos.workstation-utils
+            self.modules.nixos.workstation
             self.modules.nixos.plasma # TODO: move to individual device configs
             inputs.peerix.nixosModules.peerix
             inputs.impermanence.nixosModule
@@ -131,7 +131,6 @@
 
       # Expose NixOS system modules for potential reuse
       nixosModules = {
-        cross-compilation = ./system-modules/cross-compilation.nix;
         steam = ./system-modules/steam.nix;
         virtualbox = ./system-modules/virtualbox.nix;
         docker = ./services/docker.nix;

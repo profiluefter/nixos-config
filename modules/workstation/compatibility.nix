@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.modules.nixos.workstation-utils =
+  flake.modules.nixos.workstation =
     { system, ... }:
     {
       programs.nix-ld.enable = true;
