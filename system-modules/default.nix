@@ -1,8 +1,6 @@
 { ... }:
 {
   imports = [
-    ./system-purity
-
     ./cifs.nix
     ./compatibility.nix
     ./nix.nix

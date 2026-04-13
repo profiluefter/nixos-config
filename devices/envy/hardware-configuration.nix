@@ -23,11 +23,6 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  profi.systemPurity = {
-    enable = true;
-    rollback = true;
-  };
-
   profi.partitions = {
     enable = false;
     btrfsDevice = "/dev/disk/by-partlabel/disk-ssd-btrfs";

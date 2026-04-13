@@ -17,11 +17,6 @@
   fileSystems."/persist".neededForBoot = true;
   fileSystems."/var/log".neededForBoot = true;
 
-  profi.systemPurity = {
-    enable = true;
-    rollback = false;
-  };
-
   disko = {
     enableConfig = true;
     checkScripts = true;

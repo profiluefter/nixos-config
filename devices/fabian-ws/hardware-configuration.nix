@@ -23,11 +23,6 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  profi.systemPurity = {
-    enable = true;
-    rollback = true;
-  };
-
   profi.partitions = {
     enable = true;
     btrfsDevice = "/dev/disk/by-uuid/72afc3e6-956b-4ba7-94eb-e7d645f5bf08";
