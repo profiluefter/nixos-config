@@ -134,11 +134,5 @@
         latex = ./user-modules/latex.nix;
         school = ./user-modules/school.nix;
       };
-
-      # Expose NixOS system modules for potential reuse
-      nixosModules = {
-        virtualbox = ./system-modules/virtualbox.nix;
-        docker = ./services/docker.nix;
-      };
     };
 }
