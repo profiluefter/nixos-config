@@ -8,6 +8,5 @@
     ../../user-modules/gpg.nix
     ../../user-modules/hardware
     ../../user-modules/latex.nix
-    ../../user-modules/school.nix
   ];
 }

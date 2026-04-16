@@ -38,15 +38,6 @@
               ];
               neededForUsers = true;
             }
-            {
-              sopsFile = ../../secrets/school.yaml;
-              keys = [
-                "username"
-                "password"
-              ];
-              keyPrefix = "school-";
-              owner = "fabian";
-            }
           ];
 
           entries = map (
