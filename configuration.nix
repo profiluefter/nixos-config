@@ -12,9 +12,6 @@
   ];
 
   imports = [
-    ./system-packages.nix
-    ./locales.nix
-
     ./services/docker.nix
     ./services/firewall.nix
     ./services/networking.nix
