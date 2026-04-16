@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.nixos.workstation =
+  flake.nixosModules.workstation =
     { ... }:
     {
       networking.networkmanager.ensureProfiles.profiles = {

@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 let
   keepassxc-autostart = pkgs.makeAutostartItem {
     name = "KeePassXC";

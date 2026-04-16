@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.nixos.desktop-common =
+  flake.nixosModules.desktop-common =
     { pkgs, ... }:
     {
       fonts.packages = with pkgs; [

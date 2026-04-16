@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.nixos.default =
+  flake.nixosModules.default =
     { ... }:
     {
       console.keyMap = "de-latin1-nodeadkeys";

@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.nixos.default =
+  flake.nixosModules.default =
     { pkgs, ... }:
     {
       # Allow unfree packages

@@ -26,14 +26,14 @@
             { nixpkgs.overlays = [ overlay-unstable ]; }
             { system.configurationRevision = self.rev or "dirty"; }
 
-            self.modules.nixos.default
-            self.modules.nixos.secrets
-            self.modules.nixos.workstation
+            self.nixosModules.default
+            self.nixosModules.secrets
+            self.nixosModules.workstation
 
             # TODO: move to individual device configs
-            self.modules.nixos.gaming
-            self.modules.nixos.virtualbox
-            self.modules.nixos.plasma
+            self.nixosModules.gaming
+            self.nixosModules.virtualbox
+            self.nixosModules.plasma
 
             inputs.impermanence.nixosModule
             inputs.home-manager.nixosModules.home-manager

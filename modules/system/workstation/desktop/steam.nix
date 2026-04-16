@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.modules.nixos.gaming =
+  flake.nixosModules.gaming =
     { ... }:
     {
       programs.steam = {

@@ -1,10 +1,10 @@
 { self, ... }:
 {
-  flake.modules.nixos.plasma =
+  flake.nixosModules.plasma =
     { ... }:
     {
       imports = [
-        self.modules.nixos.desktop-common
+        self.nixosModules.desktop-common
       ];
 
       # Enable the X11 windowing system.
