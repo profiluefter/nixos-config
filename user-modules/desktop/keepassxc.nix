@@ -11,9 +11,4 @@ in
     keepassxc-autostart
     pkgs.keepassxc
   ];
-
-  # TODO: move device specific configuration
-  home.file = {
-    passwords.source = config.lib.file.mkOutOfStoreSymlink "/data/sync/passwords";
-  };
 }

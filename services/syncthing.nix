@@ -4,7 +4,7 @@ let
 in
 {
   services.syncthing = {
-    enable = true;
+    enable = false; # TODO: re-enable after new dataDir is set
     openDefaultPorts = true;
 
     user = "fabian";

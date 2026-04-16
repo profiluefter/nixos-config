@@ -13,8 +13,6 @@
 
         # Import device-specific home configuration
         (../devices/${config.networking.hostName}/home.nix)
-
-        ./fabian/code.nix
       ];
 
       home.stateVersion = "23.05";
