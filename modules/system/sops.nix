@@ -47,15 +47,6 @@
               keyPrefix = "school-";
               owner = "fabian";
             }
-            {
-              sopsFile = ../../secrets/gitlab.yaml;
-              keys = [
-                "username"
-                "personal-access-token"
-              ];
-              keyPrefix = "gitlab-";
-              owner = "fabian";
-            }
           ];
 
           entries = map (
