@@ -2,7 +2,6 @@
 {
   projectRootFile = "flake.nix";
   settings.global.excludes = [
-    "services/peerix/peerix-public" # plain text file
   ];
 
   programs.nixfmt.enable = true;

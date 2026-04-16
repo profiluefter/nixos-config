@@ -19,7 +19,6 @@
     ./services/firewall.nix
     ./services/networking.nix
     ./services/openssh.nix
-    ./services/peerix
     ./services/pipewire.nix
     ./services/syncthing.nix
 

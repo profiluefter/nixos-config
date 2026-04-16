@@ -35,7 +35,6 @@
             self.modules.nixos.virtualbox
             self.modules.nixos.plasma
 
-            inputs.peerix.nixosModules.peerix
             inputs.impermanence.nixosModule
             inputs.home-manager.nixosModules.home-manager
             inputs.disko.nixosModules.disko

@@ -2,7 +2,6 @@
 {
   flake.modules.nixos.secrets =
     {
-      config,
       pkgs,
       lib,
       ...
@@ -47,13 +46,6 @@
               ];
               keyPrefix = "school-";
               owner = "fabian";
-            }
-            {
-              enable = config.services.peerix.enable;
-              sopsFile = ../../secrets/peerix.yaml;
-              keys = [ "private" ];
-              keyPrefix = "peerix-";
-              owner = "peerix";
             }
             {
               sopsFile = ../../secrets/gitlab.yaml;
