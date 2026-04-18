@@ -27,6 +27,7 @@
             { system.configurationRevision = self.rev or "dirty"; }
 
             self.nixosModules.default
+            self.nixosModules.users
             self.nixosModules.secrets
             self.nixosModules.workstation
 
@@ -36,7 +37,6 @@
             self.nixosModules.plasma
 
             inputs.impermanence.nixosModule
-            inputs.home-manager.nixosModules.home-manager
             inputs.disko.nixosModules.disko
 
             { networking.hostName = hostname; }

@@ -18,9 +18,6 @@
     ./services/openssh.nix
     ./services/pipewire.nix
     ./services/syncthing.nix
-
-    ./users/profiles.nix
-    ./users/home-manager.nix
   ];
 
   # This value determines the NixOS release from which the default
