@@ -1,5 +1,7 @@
 { ... }:
 {
+  # TODO: don't configure manually; figure out solution for allowing user ports
+
   # KDE Connect
   networking.firewall = rec {
     allowedTCPPortRanges = [

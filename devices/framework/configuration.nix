@@ -5,8 +5,6 @@
     ./drives.nix
 
     inputs.nixos-hardware.nixosModules.framework-13th-gen-intel
-
-    ../../services/docker.nix
   ];
 
   fileSystems."/data".neededForBoot = true;

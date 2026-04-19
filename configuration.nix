@@ -12,11 +12,8 @@
   ];
 
   imports = [
-    ./services/docker.nix
     ./services/firewall.nix
     ./services/networking.nix
-    ./services/openssh.nix
-    ./services/pipewire.nix
     ./services/syncthing.nix
   ];
 

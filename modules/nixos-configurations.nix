@@ -30,6 +30,7 @@
             self.nixosModules.users
             self.nixosModules.secrets
             self.nixosModules.workstation
+            self.nixosModules.containers
 
             # TODO: move to individual device configs
             self.nixosModules.gaming

@@ -9,7 +9,5 @@
     ./soundcard.nix
     ./g910.nix
     #./screens.nix
-
-    ../../services/docker.nix
   ];
 }
