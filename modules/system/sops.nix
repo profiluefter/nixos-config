@@ -21,16 +21,6 @@
         let
           files = [
             {
-              sopsFile = ../../secrets/vpn.profiluefter.me.yaml;
-              keyPrefix = "vpn-";
-              keys = [
-                "tls-crypt-v2"
-                "key"
-                "cert"
-                "ca"
-              ];
-            }
-            {
               sopsFile = ../../secrets/users.yaml;
               keys = [
                 "rootHash"
