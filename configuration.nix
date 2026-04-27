@@ -11,12 +11,6 @@
     "/share/bash-completion" # for better bash completion according to home-manager docs
   ];
 
-  imports = [
-    ./services/firewall.nix
-    ./services/networking.nix
-    ./services/syncthing.nix
-  ];
-
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave

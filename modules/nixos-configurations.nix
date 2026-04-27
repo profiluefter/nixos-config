@@ -34,6 +34,7 @@
 
             # TODO: move to individual device configs
             self.nixosModules.gaming
+            self.nixosModules.syncthing
             self.nixosModules.virtualbox
             self.nixosModules.plasma
 
