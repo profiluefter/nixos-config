@@ -1,10 +1,18 @@
 { ... }:
 {
   flake.homeModules.desktop-common =
-    { pkgs, lib, ... }:
+    { pkgs, ... }:
     {
-      # Override the default curses pinentry with Qt pinentry for desktop
-      services.gpg-agent.pinentry.package = lib.mkForce pkgs.pinentry-qt;
+      programs.gpg = {
+        enable = true;
+      };
+
+      services.gpg-agent = {
+        enable = true;
+        enableSshSupport = true;
+        pinentry.package = pkgs.pinentry-qt;
+        sshKeys = [ "F14AB18A69F3A862C4AB47DAF3C49AFC6A443015" ];
+      };
 
       home.packages = [ pkgs.kdePackages.kleopatra ];
     };
