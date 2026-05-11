@@ -1,10 +1,7 @@
-{ ... }:
+{ inputs, ... }:
 {
   flake.nixosModules.users =
-    {
-      inputs,
-      ...
-    }:
+    { ... }:
     {
       imports = [
 

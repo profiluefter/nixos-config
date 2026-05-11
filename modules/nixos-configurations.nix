@@ -2,52 +2,36 @@
 {
   flake =
     let
-      makeNixOSConfiguration =
-        hostname: system: additionalConfig:
-        let
-          nixpkgsConfig = {
-            inherit system;
-            config.allowUnfree = true;
-            config.android_sdk.accept_license = true;
-          };
-          overlay-unstable = _final: _prev: {
-            unstable = import inputs.nixpkgs-unstable nixpkgsConfig;
-          };
-        in
-        {
-          inherit system;
+      makeNixOSConfiguration = hostname: system: additionalConfig: {
+        inherit system;
 
-          specialArgs = {
-            inherit system inputs;
-          };
+        #specialArgs = {
+        #  inherit system inputs;
+        #};
 
-          modules = [
-            # overlay for pkgs.unstable
-            { nixpkgs.overlays = [ overlay-unstable ]; }
-            { system.configurationRevision = self.rev or "dirty"; }
+        modules = [
+          self.nixosModules.default
+          self.nixosModules.users
+          self.nixosModules.secrets
+          self.nixosModules.workstation
+          self.nixosModules.containers
 
-            self.nixosModules.default
-            self.nixosModules.users
-            self.nixosModules.secrets
-            self.nixosModules.workstation
-            self.nixosModules.containers
+          # TODO: move to individual device configs
+          self.nixosModules.gaming
+          self.nixosModules.syncthing
+          self.nixosModules.virtualbox
+          self.nixosModules.plasma
 
-            # TODO: move to individual device configs
-            self.nixosModules.gaming
-            self.nixosModules.syncthing
-            self.nixosModules.virtualbox
-            self.nixosModules.plasma
+          inputs.impermanence.nixosModule
+          inputs.disko.nixosModules.disko
 
-            inputs.impermanence.nixosModule
-            inputs.disko.nixosModules.disko
+          { networking.hostName = hostname; }
 
-            { networking.hostName = hostname; }
-
-            # General configuration
-            ../configuration.nix
-          ]
-          ++ additionalConfig;
-        };
+          # General configuration
+          ../configuration.nix
+        ]
+        ++ additionalConfig;
+      };
       makeNixOS =
         hostname: system: additionalConfig:
         inputs.nixpkgs.lib.nixosSystem (makeNixOSConfiguration hostname system additionalConfig);
@@ -60,8 +44,8 @@
       nixosConfigurations.framework = makeNixOS "framework" "x86_64-linux" [
         ../devices/framework/configuration.nix
       ];
-      nixosConfigurations.nixos-testbench = makeNixOS "nixos-testbench" "x86_64-linux" [
-        ../devices/nixos-testbench/configuration.nix
-      ];
+      #nixosConfigurations.nixos-testbench = makeNixOS "nixos-testbench" "x86_64-linux" [
+      #  ../devices/nixos-testbench/configuration.nix
+      #];
     };
 }
