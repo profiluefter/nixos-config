@@ -29,7 +29,6 @@
         self.nixosModules.workstation
         self.nixosModules.containers
 
-        # TODO: move to individual device configs
         self.nixosModules.gaming
         self.nixosModules.syncthing
         self.nixosModules.virtualbox
