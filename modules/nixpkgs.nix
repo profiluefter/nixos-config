@@ -1,14 +1,12 @@
 { inputs, self, ... }:
 {
-  flake.overlays.unstable =
-    { system, ... }:
-    _final: _prev: {
-      unstable = import inputs.nixpkgs-unstable {
-        inherit system;
-        config.allowUnfree = true;
-        config.android_sdk.accept_license = true;
-      };
+  flake.overlays.unstable = final: _prev: {
+    unstable = import inputs.nixpkgs-unstable {
+      inherit (final) system;
+      config.allowUnfree = true;
+      config.android_sdk.accept_license = true;
     };
+  };
   flake.nixosModules.default =
     { ... }:
     {
