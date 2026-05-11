@@ -5,9 +5,9 @@
       makeNixOSConfiguration = hostname: system: additionalConfig: {
         inherit system;
 
-        #specialArgs = {
-        #  inherit system inputs;
-        #};
+        specialArgs = {
+          inherit system inputs;
+        };
 
         modules = [
           self.nixosModules.default

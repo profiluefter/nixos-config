@@ -1,11 +1,23 @@
-{ self, inputs, ... }:
 {
-  flake.nixosConfigurations.nixos-testbench = inputs.nixpkgs.lib.nixosSystem {
-    system = "x86_64-linux";
-    modules = [
-      self.nixosModules.nixos-testbench
-    ];
-  };
+  self,
+  inputs,
+  withSystem,
+  ...
+}:
+{
+  flake.nixosConfigurations.nixos-testbench = withSystem "x86_64-linux" (
+    { system, ... }:
+    inputs.nixpkgs.lib.nixosSystem {
+      inherit system;
+      specialArgs = {
+        inherit system inputs;
+      };
+      modules = [
+        self.nixosModules.nixos-testbench
+        ../../../configuration.nix
+      ];
+    }
+  );
 
   flake.nixosModules.nixos-testbench =
     { ... }:
