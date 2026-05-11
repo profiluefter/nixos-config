@@ -11,20 +11,20 @@
     { ... }:
     {
       imports = [
-          self.nixosModules.default
-          self.nixosModules.users
-          self.nixosModules.secrets
-          self.nixosModules.workstation
-          self.nixosModules.containers
+        self.nixosModules.default
+        self.nixosModules.users
+        self.nixosModules.secrets
+        self.nixosModules.workstation
+        self.nixosModules.containers
 
-          # TODO: move to individual device configs
-          self.nixosModules.gaming
-          self.nixosModules.syncthing
-          self.nixosModules.virtualbox
-          self.nixosModules.plasma
+        # TODO: move to individual device configs
+        self.nixosModules.gaming
+        self.nixosModules.syncthing
+        self.nixosModules.virtualbox
+        self.nixosModules.plasma
 
-          inputs.impermanence.nixosModule
-          inputs.disko.nixosModules.disko
+        inputs.impermanence.nixosModule
+        inputs.disko.nixosModules.disko
       ];
 
       users.users.test = {
