@@ -1,9 +1,8 @@
-{ ... }:
+{ self, ... }:
 {
-  flake.nixosModules.envy =
-    { ... }:
-    {
-      disko.devices.disk = {
+  flake.diskoConfigurations.envy = {
+    disko.devices = {
+      disk = {
         ssd = {
           type = "disk";
           device = "/dev/nvme0n1";
@@ -58,5 +57,12 @@
           };
         };
       };
+    };
+  };
+
+  flake.nixosModules.envy =
+    { ... }:
+    {
+      disko.devices = self.diskoConfigurations.envy.disko.devices;
     };
 }
