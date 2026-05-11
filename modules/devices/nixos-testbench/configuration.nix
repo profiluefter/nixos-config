@@ -48,5 +48,10 @@
         ];
         initialPassword = "test";
       };
+
+      services.displayManager.autoLogin = {
+        enable = true;
+        user = "test";
+      };
     };
 }
