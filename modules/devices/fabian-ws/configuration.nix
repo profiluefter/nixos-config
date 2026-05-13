@@ -5,6 +5,22 @@
   ...
 }:
 {
+  flake.homeModules.fabian-ws =
+    { ... }:
+    {
+      imports = [
+        self.homeModules.default
+      ];
+    };
+
+  flake.homeConfigurations."fabian@fabian-ws" = withSystem "x86_64-linux" (
+    { pkgs, ... }:
+    inputs.home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+      extraSpecialArgs = { inherit inputs self; };
+      modules = [ self.homeModules.fabian-ws ];
+    }
+  );
   flake.nixosConfigurations.fabian-ws = withSystem "x86_64-linux" (
     { system, ... }:
     inputs.nixpkgs.lib.nixosSystem {
@@ -14,7 +30,6 @@
       };
       modules = [
         self.nixosModules.fabian-ws
-        ../../../configuration.nix
       ];
     }
   );
@@ -39,5 +54,7 @@
       ];
 
       networking.hostName = "fabian-ws";
+
+      home-manager.users.fabian = self.homeModules.fabian-ws;
     };
 }

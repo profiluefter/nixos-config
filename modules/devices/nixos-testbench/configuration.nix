@@ -14,7 +14,6 @@
       };
       modules = [
         self.nixosModules.nixos-testbench
-        ../../../configuration.nix
       ];
     }
   );

@@ -5,6 +5,22 @@
   ...
 }:
 {
+  flake.homeModules.envy =
+    { ... }:
+    {
+      imports = [
+        self.homeModules.default
+      ];
+    };
+
+  flake.homeConfigurations."fabian@envy" = withSystem "x86_64-linux" (
+    { pkgs, ... }:
+    inputs.home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+      extraSpecialArgs = { inherit inputs self; };
+      modules = [ self.homeModules.envy ];
+    }
+  );
   flake.nixosConfigurations.envy = withSystem "x86_64-linux" (
     { system, ... }:
     inputs.nixpkgs.lib.nixosSystem {
@@ -14,7 +30,6 @@
       };
       modules = [
         self.nixosModules.envy
-        ../../../configuration.nix
       ];
     }
   );
@@ -39,5 +54,7 @@
       ];
 
       networking.hostName = "envy";
+
+      home-manager.users.fabian = self.homeModules.envy;
     };
 }
