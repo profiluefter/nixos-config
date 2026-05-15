@@ -25,7 +25,7 @@
           intel-vaapi-driver
           libvdpau-va-gl
 
-          vaapiVdpau
+          libva-vdpau-driver
         ];
       };
 

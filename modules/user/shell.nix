@@ -5,16 +5,18 @@
     {
       programs.git = {
         enable = true;
-        userName = "Fabian Gurtner";
-        userEmail = "fabian.paul.gurtner@gmail.com";
+        settings = {
+          user.name = "Fabian Gurtner";
+          user.email = "fabian.paul.gurtner@gmail.com";
+        };
 
         signing = {
           key = "61D3E3F22AA966EF";
           signByDefault = true;
         };
-
-        delta.enable = true;
       };
+      programs.delta.enable = true;
+      programs.delta.enableGitIntegration = true;
 
       programs.ssh = {
         enable = true;

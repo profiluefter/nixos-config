@@ -1,16 +1,8 @@
 { ... }:
 {
   flake.nixosModules.default =
-    { pkgs, ... }:
+    { ... }:
     {
-      systemd.extraConfig = ''
-        DefaultTimeoutStopSec=10s
-      '';
-
-      services.udev.packages = [
-        pkgs.android-udev-rules
-      ];
-
-      users.groups.adbusers = { }; # TODO: move to adb specific config
+      systemd.settings.Manager.DefaultTimeoutStopSec = "10s";
     };
 }
