@@ -13,17 +13,6 @@
       ];
     };
 
-  flake.homeConfigurations."fabian@fabian-ws" = withSystem "x86_64-linux" (
-    { pkgs, ... }:
-    inputs.home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-      extraSpecialArgs = { inherit inputs self; };
-      modules = [
-        self.homeModules.fabian-ws
-        { home.username = "fabian"; }
-      ];
-    }
-  );
   flake.nixosConfigurations.fabian-ws = withSystem "x86_64-linux" (
     { system, ... }:
     inputs.nixpkgs.lib.nixosSystem {
