@@ -18,7 +18,10 @@
     inputs.home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
       extraSpecialArgs = { inherit inputs self; };
-      modules = [ self.homeModules.fabian-ws ];
+      modules = [
+        self.homeModules.fabian-ws
+        { home.username = "fabian"; }
+      ];
     }
   );
   flake.nixosConfigurations.fabian-ws = withSystem "x86_64-linux" (
